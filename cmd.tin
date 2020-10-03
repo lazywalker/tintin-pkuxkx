@@ -2,7 +2,6 @@
 #alias {hpb} {hpbrief}
 #alias {m} {localmaps}
 #alias {map} {localmaps}
-#alias {p} {perform sword.bafang}
 #alias {q} {quest}
 #alias {st} {status_me}
 
