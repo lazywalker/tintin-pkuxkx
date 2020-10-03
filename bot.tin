@@ -1,0 +1,15 @@
+#NOP execute lian [blade|dodge|strike|parry|hand] 50 repeatly
+#NOP 练特殊武功
+#NOP location: 贵妃浴场
+#alias {lload} {
+    #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand" } {
+        #var {skill} {%1};
+        #read {bot/lianxi.tin}
+    };
+    #else {
+        #echo {%c使用方法：lload [blade|dodge|strike|parry|hand] } {light yellow};
+    };
+    
+}
+
+#NOP #action {^你和师父切磋了%*消耗了大量潜能} {lstop};

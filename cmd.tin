@@ -1,0 +1,54 @@
+#alias {bmap} {help map-pkuxkx}
+#alias {hpb} {hpbrief}
+#alias {m} {localmaps}
+#alias {map} {localmaps}
+#alias {p} {perform sword.bafang}
+#alias {q} {quest}
+#alias {st} {status_me}
+
+#alias {tdm}{n;e;n;w;n;e;w;n}
+
+#alias {jiedu} { yun inspire; }
+#alias {xq} { yun recover; }
+#alias {xq2} { yun qi; }
+#alias {yj} { yun regenerate; }
+#alias {yj2} { yun jing; }
+#alias {yp} { yun powerup; }
+#alias {yi} { yun inspire; }
+#alias {yh} { yun heal; }
+#alias {8} { unwield all; wield staff; jifa parry dagou-bang }
+#alias {9} { unwield all; wield blade; jifa parry liuhe-dao }
+#alias {0} { unwield all; jifa parry xianglong-zhang; bei none; bei strike hand; }
+
+#alias {ch} { #5 drink jiudai; #5 eat gan liang; }
+#alias {getdress} {
+    draw armor; draw head; draw cloth; draw surcoat; draw boots;
+    wear armor; wear head; wear cloth; wear surcoat; wear boots;
+}
+
+#tab {answer}
+#tab {bmap}
+#tab {buy}
+#tab {drink}
+#tab {enter}
+#tab {fight}
+#tab {helpme}
+#tab {knock}
+#tab {open}
+#tab {quest}
+#tab {remove}
+#tab {travel}
+#tab {tune}
+#tab {unwield}
+#tab {verify}
+#tab {walk}
+#tab {wear}
+#tab {wield}
+#tab {sleep}
+#tab {inquire}
+#tab {stopwalk}
+#tab {fill}
+#tab {fillall}
+#tab {lianxi}
+#tab {stoplianxi}
+
