@@ -2,13 +2,17 @@
 #class lianxi open;
 #show {<efa>载入$skill练功机器人…};
 
-#function {lian} {
+#function {_lian} {
     lian $skill 50;
     #return {}
 };
 
-#function {sleep} {
-    e;e;n;w;fillall; #delay 3 {ch; e;s;w;sk;hp; sleep } 
+#function {_sleep} {
+    e;e;n;w; #delay 3 {
+        fillall; #delay 3 {
+            ch; #delay 3 {
+                e;s;w;sk;hp; #delay 1 {#echo {%c不睡不行，太累了...} {light yellow}; sleep} 
+                }}}
     #return {}
 };
 
@@ -23,34 +27,35 @@
     set brief 1;
 };
 
-#action {^开始练功…$} { yun qi; @lian{}};
-#action {^你%1练习%2，获得了%3进步！$} { #delay 2 {@lian{}} };
+#action {^开始练功…$} { yun qi; @_lian{}};
+#action {^你%1练习%2，获得了%3进步！$} { #delay 2 {@_lian{}} };
 
 #action {^你减缓真气运行，让气血运行恢复正常。$} {
-    #if {"$skill" == "dodge"} {
+    #if {"$skill" == "dodge" | "$skill" == "staff" | "$skill" == "blade"} {
         yun recover;
     }; 
     
     yun qi; 
 };
 
-#action {^你的%1太低了。$} { #delay 5 {@lian{}} };
+#action {^你的%1太低了。$} { #delay 5 {@_lian{}} };
 
-#action {^( 你的内力已经枯竭，不能施用内功。)$} { @sleep{} };
-#action {^你精血不足，翻来覆去无法入眠!$} { #delay 10 {sleep} };
+#action {^( 你的内力已经枯竭，不能施用内功。)$} { @_sleep{} };
+#action {^你精血不足，翻来覆去无法入眠!$} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep;} };
 
 #NOP for hand & strike
 #if {"$skill" == "hand" | "$skill" == "strike"} {
-    #action {^你的内力不够练%*。$} { @sleep{} };
-    #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 1 {yun qi; @lian{}} };
-    #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { w; #delay 1 {dz} };
+    #action {^你的内力不够练%*。$} { @_sleep{} };
+    #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {yun qi; @_lian{}} };
+    #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { w; #delay 2 {dz} };
 };#else { 
     #if {"$skill" == "dodge"} {
-        #action {^你现在气血虚浮，练习不了%*。$} { #delay 5 {@lian{}} };
-        #action {^你太累了，没有办法练习%*。$} { #delay 5 {@lian{}} };
+        #action {^你现在气血虚浮，练习不了%*。$} { #delay 5 {@_lian{}} };
+        #action {^你太累了，没有办法练习%*。$} { #delay 5 {@_lian{}} };
     };
-    #action {^你的体力不够练%*。$} { #delay 5 {@lian{}} };
-    #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { w; #delay 1 {yun qi; @lian{}}};
+    #action {^你的体力太低了。$} { #delay 5 {@_lian{}} };
+    #action {^你的体力不够练%*。$} { #delay 5 {@_lian{}} };
+    #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { w; #delay 2 {yun qi; @_lian{}}};
 };
 
 #show {<efa>载入完毕};
