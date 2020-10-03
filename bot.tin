@@ -2,7 +2,7 @@
 #tab {lstart}
 #tab {lstop}
 
-#NOP execute lian [blade|dodge|strike|parry|hand] 50 repeatly
+#NOP execute lian [staff|blade|dodge|strike|parry|hand] 50 repeatly
 #NOP 练特殊武功
 #NOP location: 贵妃浴场
 #alias {lload} {
@@ -11,7 +11,7 @@
         #read {bot/lianxi.tin}
     };
     #else {
-        #echo {%c使用方法：lload [blade|dodge|strike|parry|hand] } {light yellow};
+        #echo {%c使用方法：lload [staff|blade|dodge|strike|parry|hand] } {light yellow};
     };
     
 }
