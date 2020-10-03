@@ -14,8 +14,18 @@
 };
 
 #class tmp open;
-#alias pku {#class tmp kill;#re pkuxkx.tin};
+#alias pku {#class tmp kill;#read pkuxkx.tin};
 #class tmp close;
+
+#class tmp open;
+#tab {reloadtt}
+#alias reloadtt {
+	#class tmp kill;
+	#show {<efa>TT SCRIPTS RELOADED};
+	#read init.tin
+};
+#class tmp close;
+
 
 #echo {%c%h} {light yellow};
 #echo {%c%h} {light green} {【请输入pku指令连接至北大侠客行】};
