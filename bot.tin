@@ -1,3 +1,7 @@
+#tab {lload}
+#tab {lstart}
+#tab {lstop}
+
 #NOP execute lian [blade|dodge|strike|parry|hand] 50 repeatly
 #NOP 练特殊武功
 #NOP location: 贵妃浴场
