@@ -17,17 +17,17 @@
 };
 
 #alias {lstart} {
-    #show {<efa>开始练功…} ;
+    #show {<efa>开始练功...} ;
 	set brief 3;
 };
 
 #alias {lstop} {
-    #show {<efa>结束练功…};
+    #show {<efa>结束练功...};
     #class lianxi kill;
     set brief 1;
 };
 
-#action {^开始练功…$} { yun qi; @_lian{}};
+#action {^开始练功...$} { yun qi; @_lian{}};
 #action {^你%1练习%2，获得了%3进步！$} { #delay 2 {@_lian{}} };
 
 #action {^你减缓真气运行，让气血运行恢复正常。$} {
