@@ -23,8 +23,15 @@
             #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {yun qi; @_lian{}}};
         };
 
+        #action {^你需要提高基本功，不然练得再多也没有用。$} { 
+            #class lianxi kill;
+            loadbot lingwu; 
+            #show {<efa>正在切换到基础功夫领悟...};
+            #delay 1 {startbot ${lian.skill}}
+        };
+
         #show {<efa>skill: ${lian.skill}};
-        #show {<efa>开始练习...} ;
+        #show {<efa>开始练习高级武功...} ;
         set brief 3;
     };
     #else {
@@ -33,12 +40,12 @@
 };
 
 #alias {stopbot} {
-    #show {<efa>结束练习...};
+    #show {<efa>结束练习高级武功...};
     #class lianxi kill;
     set brief 1;
 };
 
-#action {^开始练习...$} { yun qi; @_lian{}};
+#action {^开始练习高级武功...$} { yun qi; @_lian{}};
 #action {^你%1练习%2，获得了%3进步！$} { #delay 2 {@_lian{}} };
 
 #action {^你减缓真气运行，让气血运行恢复正常。$} {

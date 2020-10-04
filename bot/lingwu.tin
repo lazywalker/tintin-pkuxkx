@@ -1,16 +1,23 @@
 #class lianxi open;
+#list {basic.skills} {create} {blade} {dodge} {force} {strike} {parry} {staff} {hand}
 
 #function {_lian} {
-    lingwu ${lian.skill} 10;
+    lingwu ${lingwu.skill} 10;
     #return {}
 };
 
 #alias {startbot} {
-    #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
-        #var {lian.skill} {%1}; 
+    #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "force" |"%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
+        #var {lingwu.skill} {%1}; 
+        #action {^你的基本功夫比你的高级功夫还高！$} { 
+            #class lianxi kill;
+            loadbot lian; 
+            #show {<efa>正在切换到高级功夫练习...};
+            #delay 1 {startbot ${lingwu.skill}}
+        };
 
-        #show {<efa>skill: ${lian.skill}};
-        #show {<efa>开始领悟...} ;
+        #show {<efa>skill: ${lingwu.skill}};
+        #show {<efa>开始领悟基础武功...} ;
         set brief 3;
     };
     #else {
@@ -19,19 +26,21 @@
 };
 
 #alias {stopbot} {
-    #show {<efa>结束领悟...};
+    #show {<efa>结束领悟基础武功...};
     #class lianxi kill;
     set brief 1;
 };
 
-#action {^开始领悟...$} { @_lian{}};
+#action {^开始领悟基础武功...$} { @_lian{}};
 #action {^你领悟了%1次%2。$} { #delay 2 {@_lian{}} };
 #action {^你现在过于疲倦,无法静下心来领悟功夫！$} { yun regenerate; };
+#action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };
 #action {^你略一凝神，精神看起来好多了。$} { #delay 2 {@_lian{}} }
 #action {^你的%1太低了。$} { #delay 5 {@_lian{}} };
 
 #action {^你的内力不够。$} { @_sleep{} }
 #action {^( 你的内力已经枯竭，不能施用内功。)$} { @_sleep{} };
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {@_lian{}}};
+
 
 #class lianxi close;
