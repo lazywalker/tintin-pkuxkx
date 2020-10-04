@@ -1,5 +1,5 @@
 #function {_log} {
-	#format logfile {log/%t.log} {%Y%m%d_%H};
+	#format logfile {log/%t.log} {%Y%m%d};
 	#log overwrite $logfile;
 };
 
