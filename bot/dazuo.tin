@@ -1,37 +1,27 @@
 #class lianxi open;
-#show {<efa>载入打坐机器人…};
+#var dazuo.qi 10;
 
 #function {_lian} {
-    dazuo 10;
+    dazuo ${dazuo.qi};
     #return {}
 };
 
-#function {_sleep} {
-    e;e;n;w; #delay 3 {
-        fillall; #delay 3 {
-            ch; #delay 3 {
-                e;s;w;sk;hp; #delay 1 {#echo {%c不睡不行，太累了...} {light yellow}; sleep} 
-                }}}
-    #return {}
-};
-
-#alias {lstart} {
-    #show {<efa>开始练功...} ;
+#alias {startbot} {
+    #show {<efa>开始打坐...} ;
 	set brief 3;
 };
 
-#alias {lstop} {
-    #show {<efa>结束练功...};
+#alias {stopbot} {
+    #show {<efa>结束打坐...};
     #class lianxi kill;
     set brief 1;
 };
 
-#action {^开始练功...$} { dz };
+#action {^开始打坐...$} { dz };
 #action {^你的内力增加了！！$} { ch; #delay 3 {dz} };
 #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {@_lian{}} };
 #action {^你运功完毕，深深吸了口气，站了起来。$} { @_lian{}  };
 #action {^你现在的气太少了，无法产生内息运行全身经脉。$} { @_sleep{} };
-#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { w; #delay 2 {dz}  };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {dz}  };
 
-#show {<efa>载入完毕};
 #class lianxi close;

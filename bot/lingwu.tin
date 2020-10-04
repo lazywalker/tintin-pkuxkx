@@ -1,0 +1,37 @@
+#class lianxi open;
+
+#function {_lian} {
+    lingwu ${lian.skill} 10;
+    #return {}
+};
+
+#alias {startbot} {
+    #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
+        #var {lian.skill} {%1}; 
+
+        #show {<efa>skill: ${lian.skill}};
+        #show {<efa>开始领悟...} ;
+        set brief 3;
+    };
+    #else {
+        #echo {%c使用方法：startbot [staff|blade|dodge|strike|parry|hand] } {light yellow};
+    };
+};
+
+#alias {stopbot} {
+    #show {<efa>结束领悟...};
+    #class lianxi kill;
+    set brief 1;
+};
+
+#action {^开始领悟...$} { @_lian{}};
+#action {^你领悟了%1次%2。$} { #delay 2 {@_lian{}} };
+#action {^你现在过于疲倦,无法静下心来领悟功夫！$} { yun regenerate; };
+#action {^你略一凝神，精神看起来好多了。$} { #delay 2 {@_lian{}} }
+#action {^你的%1太低了。$} { #delay 5 {@_lian{}} };
+
+#action {^你的内力不够。$} { @_sleep{} }
+#action {^( 你的内力已经枯竭，不能施用内功。)$} { @_sleep{} };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {@_lian{}}};
+
+#class lianxi close;

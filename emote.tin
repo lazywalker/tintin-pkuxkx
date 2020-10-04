@@ -3,7 +3,7 @@
 
 #nop 刷屏太频繁会被投票关掉频道;
 #nop #tic {chat_rnd.emote} {chatr} {8888};
-#tic {rnd.emote} {sayr} {999};
+#NOP #tic {rnd.emote} {sayr} {999};
 
 #nop 获取上一条表情发出者id;
 #act {^【闲聊】%!*(%w ||} {#var lastid %1};

@@ -18,15 +18,32 @@
 #alias pku {#class tmp kill;#read pkuxkx.tin};
 #class tmp close;
 
-#class tmp open;
-#tab {reloadtt}
-#alias reloadtt {
-	#class tmp kill;
+#tab {reload};
+#alias reload {
+	#kill {all};
 	#show {<efa>TT SCRIPTS RELOADED};
 	#read init.tin
 };
-#class tmp close;
 
+#tab {read};
+#var READ_VERBOSE 1;
+#alias read {
+    #if { "$READ_VERBOSE" == "0" } {#read %1};
+    #else {#line verbose #read %1};
+};
+
+#tab {clear};
+#alias {clear} {
+    #system {tput clear};
+};
+
+#nop 屏蔽连接提示;
+#event {GAG SESSION ACTIVATED} {#0};
+#event {GAG SESSION CONNECTED} {#0};
+#event {GAG SESSION CREATED} {#0};
+#event {GAG SESSION DEACTIVATED} {#0};
+#event {GAG SESSION DISCONNECTED} {#0};
+#event {GAG SESSION TIMED OUT} {#0};
 
 #echo {%c%h} {light yellow};
 #echo {%c%h} {light green} {【请输入pku指令连接至北大侠客行】};
