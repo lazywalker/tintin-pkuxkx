@@ -1,4 +1,5 @@
 #read {config.tin}
+#read {log.tin}
 #read {cmd.tin}
 #read {action.tin}
 #read {goto.tin}

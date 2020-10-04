@@ -1,0 +1,7 @@
+#function {_log} {
+	#format logfile {log/%t.log} {%Y%m%d_%H};
+	#log overwrite $logfile;
+};
+
+#event {HOUR} {@_log{}};
+#delay {10} {@_log{}};
