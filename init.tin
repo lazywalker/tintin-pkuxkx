@@ -5,6 +5,7 @@
 #read {goto.tin}
 #read {emote.tin}
 #read {bot.tin}
+#read {plugin.tin}
 
 #split
 

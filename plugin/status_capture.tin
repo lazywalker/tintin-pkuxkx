@@ -1,0 +1,10 @@
+#action {~%0} {
+	#var line {%0};
+	#var lines {${lines}${line}};
+	#gag line
+} {9}
+
+#action {$capture_till} {
+	#class multiline_capture kill;
+	#showme {${lines}}
+} {0}

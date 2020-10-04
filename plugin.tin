@@ -1,0 +1,2 @@
+#NOP TODO: plugin load|reload|unload
+#read {plugin/status.tin};
