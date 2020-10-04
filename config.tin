@@ -12,7 +12,7 @@
 #CONFIG           {PACKET PATCH}  {AUTO OFF}
 #CONFIG           {RANDOM SEED}  {3930861485}
 #CONFIG           {REPEAT CHAR}  {!}
-#CONFIG           {REPEAT ENTER}  {OFF}
+#CONFIG           {REPEAT ENTER}  {ON}
 #CONFIG           {SCREEN READER}  {OFF}
 #CONFIG           {SCROLL LOCK}  {ON}
 #CONFIG           {SPEEDWALK}  {OFF}
@@ -22,7 +22,7 @@
 #CONFIG           {VERBATIM}  {OFF}
 #CONFIG           {VERBATIM CHAR}  {\}
 #CONFIG           {VERBOSE}  {OFF}
-#CONFIG           {WORDWRAP}  {ON}
+#CONFIG           {WORDWRAP}  {OFF}
 
 #EVENT {SCROLLED CTRL MOUSE WHEEL DOWN}
 {
