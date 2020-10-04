@@ -15,9 +15,10 @@
 #alias {yp} { yun powerup; }
 #alias {yi} { yun inspire; }
 #alias {yh} { yun heal; }
-#alias {8} { unwield all; wield staff; jifa parry dagou-bang }
-#alias {9} { unwield all; wield blade; jifa parry liuhe-dao }
-#alias {0} { unwield all; jifa parry xianglong-zhang; bei none; bei strike hand; }
+#alias {w1} { unwield all; wield stick; }
+#alias {w2} { unwield all; wield blade; }
+#alias {w3} { unwield all; bei none; bei strike hand; }
+#alias {w0} { unwield all; bei none; bei strike; }
 
 #alias {ch} { #5 drink jiudai; #5 eat gan liang; }
 #alias {getdress} {
