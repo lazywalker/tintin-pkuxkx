@@ -1,3 +1,5 @@
+#send {set hpbrief long,report};
+
 #alias {capture_multiline} {
 	#var capture_till {%0};
 	#var line { };
