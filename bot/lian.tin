@@ -1,8 +1,7 @@
 #class lianxi open;
 
-#function {_lian} {
+#alias {_lian} {
     lian ${lian.skill} 50;
-    #return {}
 };
 
 #alias {startbot} {
@@ -10,17 +9,17 @@
         #var {lian.skill} {%1}; 
 
         #if {"${lian.skill}" == "hand" | "${lian.skill}" == "strike"} {
-            #action {^你的内力不够练%*。$} { @_sleep{} };
-            #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {yun qi; @_lian{}} };
+            #action {^你的内力不够练%*。$} { _sleep };
+            #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {yun qi; _lian} };
             #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {dz} };
         };#else { 
             #if {"${lian.skill}" == "dodge"} {
-                #action {^你现在气血虚浮，练习不了%*。$} { #delay 5 {@_lian{}} };
-                #action {^你太累了，没有办法练习%*。$} { #delay 5 {@_lian{}} };
+                #action {^你现在气血虚浮，练习不了%*。$} { #delay 5 {_lian} };
+                #action {^你太累了，没有办法练习%*。$} { #delay 5 {_lian} };
             };
-            #action {^你的体力太低了。$} { #delay 5 {@_lian{}} };
-            #action {^你的体力不够练%*。$} { #delay 5 {@_lian{}} };
-            #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {yun qi; @_lian{}}};
+            #action {^你的体力太低了。$} { #delay 5 {_lian} };
+            #action {^你的体力不够练%*。$} { #delay 5 {_lian} };
+            #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {yun qi; _lian}};
         };
 
         #action {^你需要提高基本功，不然练得再多也没有用。$} { 
@@ -45,8 +44,8 @@
     set brief 1;
 };
 
-#action {^开始练习高级武功...$} { yun qi; @_lian{}};
-#action {^你%1练习%2，获得了%3进步！$} { #delay 2 {@_lian{}} };
+#action {^开始练习高级武功...$} { yun qi; _lian};
+#action {^你%1练习%2，获得了%3进步！$} { #delay 2 {_lian} };
 
 #action {^你减缓真气运行，让气血运行恢复正常。$} {
     #if {"${lian.skill}" == "dodge" | "${lian.skill}" == "staff" | "${lian.skill}" == "blade"} {
@@ -56,9 +55,9 @@
     yun qi; 
 };
 
-#action {^你的%1太低了。$} { #delay 5 {@_lian{}} };
+#action {^你的%1太低了。$} { #delay 5 {_lian} };
 
-#action {^( 你的内力已经枯竭，不能施用内功。)$} { @_sleep{} };
+#action {^( 你的内力已经枯竭，不能施用内功。)$} { _sleep };
 #action {^你精血不足，翻来覆去无法入眠!$} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep;} };
 
 #class lianxi close;

@@ -2,13 +2,12 @@
 #tab {startbot}
 #tab {stopbot}
 
-#function {_sleep} {
+#alias {_sleep} {
     ch; #delay 5 {
         sk;hp; #delay 2 {
             #echo {%c不睡不行，太累了...} {light yellow}; sleep;
             } 
         }
-    #return {}
 };
 
 #alias {loadbot} {

@@ -1,9 +1,8 @@
 #class lianxi open;
 #var dazuo.qi 10;
 
-#function {_lian} {
+#alias {_lian} {
     dazuo ${dazuo.qi};
-    #return {}
 };
 
 #alias {startbot} {
@@ -19,9 +18,9 @@
 
 #action {^开始打坐...$} { dz };
 #action {^你的内力增加了！！$} { ch; #delay 3 {dz} };
-#action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {@_lian{}} };
-#action {^你运功完毕，深深吸了口气，站了起来。$} { @_lian{}  };
-#action {^你现在的气太少了，无法产生内息运行全身经脉。$} { @_sleep{} };
+#action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {_lian} };
+#action {^你运功完毕，深深吸了口气，站了起来。$} { _lian  };
+#action {^你现在的气太少了，无法产生内息运行全身经脉。$} { _sleep };
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {dz}  };
 
 #class lianxi close;
