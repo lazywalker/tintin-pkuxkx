@@ -1,7 +1,7 @@
-#function {_log} {
+#alias {_log} {
 	#format logfile {log/%t.log} {%Y%m%d};
 	#log append $logfile;
 };
 
-#event {MINUTE} {@_log{}};
-#delay {1} {@_log{}};
+#event {MINUTE} {_log};
+#delay {1} {_log};
