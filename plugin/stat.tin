@@ -1,10 +1,10 @@
-#class status open;
+#class plugin.status open;
 
 #alias {capture_multiline} {
 	#var capture_till {%0};
 	#var line { };
 	#var lines { };
-	#class multiline_capture read plugin/status_capture.tin;
+	#class multiline_capture read plugin/stat_capture.tin;
 };
 
 #alias {hpb} {
@@ -19,11 +19,11 @@
 	#math {avail_jing} {%10*100 / %11};
 	#math {avail_qi} {%7*100 / %8};
 
-    #prompt {^%*#%*} {
+    #prompt {^%*#%*,%*} {
 		>>🧑<199>【<849>精神<899>】%12/%11 [${avail_jing}%]【<819>气血<899>】%9/%8 [${avail_qi}%]【<859>精力<899>】%6/%5【<819>内力<899>】%4/%3【<829>食物<899>】%15【<829>饮水<899>】%16【<849>经验<899>】%1【<869>潜能<899>】%2 <099>
 		} {-2};
 }
 
 #ticker {update_status_bar} { hpb } {5};
 
-#class status close;
+#class plugin.status close;

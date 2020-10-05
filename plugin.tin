@@ -1,2 +1,37 @@
 #NOP TODO: plugin load|reload|unload
-#read {plugin/status.tin};
+#class plugin open;
+#tab {plugin};
+#tab {staton};
+#tab {statoff};
+
+#alias {plugin} {
+    #switch {"%1"} {
+        #case {"load"} {
+            #echo {load};
+            #show {<efa>载入%2插件…};
+            #read {plugin/%2.tin};
+            #show {<efa>载入完毕};
+        };
+        #case {"unload"} {
+            #echo {load};
+            #show {<efa>卸载%2插件…};
+            #class plugin.%2.tin kill;
+            #show {<efa>卸载完毕};
+        };
+        #case {""} {
+            _plugin_help;
+        };
+        #default {
+            _plugin_help;
+        };
+    };
+
+    #alias {_plugin_help} {
+        #echo {help};
+    };
+};
+
+#alias {staton} { plugin load stat }
+#alias {statoff} { plugin unload stat }
+
+#class plugin close;
