@@ -30,7 +30,7 @@
     set brief 1;
 };
 
-#action {^开始领悟基础武功...$} { _lian};
+#action {^开始领悟基础武功...$} {_lian};
 #action {^你领悟了%1次%2。$} { #delay 2 {_lian} };
 #action {^你现在过于疲倦,无法静下心来领悟功夫！$} { yun regenerate; };
 #action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };

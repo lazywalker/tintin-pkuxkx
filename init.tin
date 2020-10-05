@@ -36,14 +36,6 @@
     #system {tput clear};
 };
 
-#nop 屏蔽连接提示;
-#event {GAG SESSION ACTIVATED} {#0};
-#event {GAG SESSION CONNECTED} {#0};
-#event {GAG SESSION CREATED} {#0};
-#event {GAG SESSION DEACTIVATED} {#0};
-#event {GAG SESSION DISCONNECTED} {#0};
-#event {GAG SESSION TIMED OUT} {#0};
-
 #echo {%c%h} {light yellow};
 #echo {%c%h} {light green} {【请输入pku指令连接至北大侠客行】};
 #echo {%c%h} {light green} {【逍遥行指令gt】};
