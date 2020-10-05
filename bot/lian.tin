@@ -26,7 +26,7 @@
             #class lianxi kill;
             loadbot lingwu; 
             #show {<efa>正在切换到基础功夫领悟...};
-            #delay 1 {startbot ${lian.skill}}
+            #delay 1 {startbot ${lian.skill}};
         };
 
         #show {<efa>skill: ${lian.skill}};

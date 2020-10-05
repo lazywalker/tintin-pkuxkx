@@ -12,11 +12,11 @@
             #class lianxi kill;
             loadbot lian; 
             #show {<efa>正在切换到高级功夫练习...};
-            #delay 1 {startbot ${lingwu.skill}}
+            #delay 1 {startbot ${lingwu.skill}};
         };
 
         #show {<efa>skill: ${lingwu.skill}};
-        #show {<efa>开始领悟基础武功...} ;
+        #show {<efa>开始领悟基础武功...};
         set brief 3;
     };
     #else {
@@ -37,7 +37,7 @@
 #action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} }
 #action {^你的%1太低了。$} { #delay 5 {_lian} };
 
-#action {^你的内力不够。$} { _sleep }
+#action {^你的内力不够。$} { _sleep };
 #action {^( 你的内力已经枯竭，不能施用内功。)$} { _sleep };
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {_lian}};
 
