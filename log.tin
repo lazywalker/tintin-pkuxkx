@@ -4,4 +4,4 @@
 };
 
 #event {MINUTE} {@_log{}};
-#delay {10} {@_log{}};
+#delay {1} {@_log{}};
