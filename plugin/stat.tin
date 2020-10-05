@@ -1,5 +1,3 @@
-#class plugin.status open;
-
 #alias {capture_multiline} {
 	#var capture_till {%0};
 	#var line { };
@@ -25,5 +23,3 @@
 }
 
 #ticker {update_status_bar} { hpb } {5};
-
-#class plugin.status close;

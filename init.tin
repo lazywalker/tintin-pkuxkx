@@ -2,8 +2,6 @@
 #read {log.tin}
 #read {cmd.tin}
 #read {action.tin}
-#read {goto.tin}
-#read {emote.tin}
 #read {bot.tin}
 #read {plugin.tin}
 

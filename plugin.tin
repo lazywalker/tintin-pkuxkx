@@ -1,15 +1,28 @@
 #NOP TODO: plugin load|reload|unload
 #class plugin open;
 #tab {plugin};
-#tab {staton};
-#tab {statoff};
+#tab {ston};
+#tab {stoff};
+#tab {gton};
+#tab {gtoff};
+#tab {emon};
+#tab {emoff};
+
+#alias {ston} { plugin load stat }
+#alias {stoff} { plugin unload stat }
+#alias {gton} { plugin load goto }
+#alias {gtoff} { plugin unload goto }
+#alias {emon} { plugin load goto }
+#alias {emoff} { plugin unload goto }
 
 #alias {plugin} {
     #switch {"%1"} {
         #case {"load"} {
             #echo {load};
             #show {<efa>载入%2插件…};
+            #class plugin.%2.tin open;
             #read {plugin/%2.tin};
+            #class plugin.%2.tin close;
             #show {<efa>载入完毕};
         };
         #case {"unload"} {
@@ -30,8 +43,5 @@
         #echo {help};
     };
 };
-
-#alias {staton} { plugin load stat }
-#alias {statoff} { plugin unload stat }
 
 #class plugin close;
