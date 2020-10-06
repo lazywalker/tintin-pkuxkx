@@ -1,19 +1,29 @@
 #class lianxi open;
-#var tuna.qi 10;
+#var tuna.jing 10;
 
 #alias {_lian} {
-    tuna ${tuna.qi};
+    #math {tuna.jing.till_upgrade} {${st.jingli_max}*2 - ${st.jingli}};
+    #math {tuna.jing.usable} {${st.jing}*0.85};
+
+    #if {${tuna.jing.till_upgrade} <= 10 & ${st.jing} > 10} {
+        #var {tuna.jing} 10;
+    };#elseif {${tuna.jing.till_upgrade} < ${tuna.jing.usable}}{
+        #math {tuna.jing} ${tuna.jing.till_upgrade};
+    };#else {
+        #math {tuna.jing} ${tuna.jing.usable};
+    };
+
+    #show tuna.jing.till_upgrade:${tuna.jing.till_upgrade}, tuna.jing:${tuna.jing};    
+    tuna ${tuna.jing};
 };
 
 #alias {startbot} {
     #show {<efa>开始吐纳...} ;
-	set brief 3;
 };
 
 #alias {stopbot} {
     #show {<efa>结束吐纳...};
     #class lianxi kill;
-    set brief 1;
 };
 
 #action {^开始吐纳...$} { _lian };

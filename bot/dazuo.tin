@@ -2,25 +2,35 @@
 #var dazuo.qi 10;
 
 #alias {_lian} {
+    #math {dazuo.qi.till_upgrade} {${st.neili_max}*2 - ${st.neili}};
+    #math {dazuo.qi.usable} {${st.qi}*0.90};
+
+    #if {${dazuo.qi.till_upgrade} <= 10 & ${st.qi} > 10} {
+        #var {dazuo.qi} 10;
+    };#elseif {${dazuo.qi.till_upgrade} < ${dazuo.qi.usable}}{
+        #math {dazuo.qi} ${dazuo.qi.till_upgrade};
+    };#else {
+        #math {dazuo.qi} ${dazuo.qi.usable};
+    };
+
+    #show dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi:${dazuo.qi};
     dazuo ${dazuo.qi};
 };
 
 #alias {startbot} {
     #show {<efa>开始打坐...} ;
-	set brief 3;
 };
 
 #alias {stopbot} {
     #show {<efa>结束打坐...};
     #class lianxi kill;
-    set brief 1;
 };
 
-#action {^开始打坐...$} { dz };
-#action {^你的内力增加了！！$} { ch; #delay 3 {dz} };
-#action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {_lian} };
+#action {^开始打坐...$} { _lian };
+#NOP #action {^你的内力增加了！！$} { ch; #delay 3 {_lian} };
+#NOP #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {_lian} };
 #action {^你运功完毕，深深吸了口气，站了起来。$} { _lian  };
 #action {^你现在的气太少了，无法产生内息运行全身经脉。$} { _sleep };
-#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {dz}  };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {_lian}  };
 
 #class lianxi close;
