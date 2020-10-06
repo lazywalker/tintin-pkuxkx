@@ -19,8 +19,8 @@
 };
 #class pkuxkx close;
 
-#tab {reload};
-#alias reload {
+#tab {reloadtt};
+#alias reloadtt {
     #kill {all};
     #show {<efa>TT SCRIPTS RELOADED};
     #read init.tin;

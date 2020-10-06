@@ -13,7 +13,7 @@
         #math {dazuo.qi} ${dazuo.qi.usable};
     };
 
-    #show dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi:${dazuo.qi};
+    #show {<efa>dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi:${dazuo.qi}};
     dazuo ${dazuo.qi};
 };
 

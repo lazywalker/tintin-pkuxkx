@@ -56,6 +56,6 @@
 #action {^你的%1太低了。$} { #delay 5 {_lian} };
 
 #action {^( 你的内力已经枯竭，不能施用内功。)$} { _sleep };
-#action {^你精血不足，翻来覆去无法入眠!$} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep;} };
+#action {你精血不足，翻来覆去无法入眠!} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep} };
 
 #class lianxi close;

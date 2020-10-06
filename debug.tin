@@ -16,3 +16,8 @@
     #DEBUG {ALL} {OFF};
     #DEBUG;
 };
+
+#alias {printon} {
+    #NOP use #unalias {%*} to stop print;
+    #alias {%*} { #showme {<fab>MSG:INPUT       %0}; };
+};

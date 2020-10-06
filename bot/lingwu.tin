@@ -1,4 +1,5 @@
 #class lianxi open;
+#show {<efa>必须在门派指定领悟室方可使用。};
 #list {basic.skills} {create} {blade} {dodge} {force} {strike} {parry} {staff} {hand}
 
 #alias {_lian} {
@@ -30,9 +31,9 @@
 
 #action {^开始领悟基础武功...$} {_lian};
 #action {^你领悟了%1次%2。$} { #delay 2 {_lian} };
-#action {^你现在过于疲倦,无法静下心来领悟功夫！$} { yun regenerate; };
+#action {^你现在过于疲倦,无法静下心来领悟功夫！$} { yun regenerate };
 #action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };
-#action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} }
+#action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} };
 #action {^你的%1太低了。$} { #delay 5 {_lian} };
 
 #action {^你的内力不够。$} { _sleep };

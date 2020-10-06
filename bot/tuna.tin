@@ -13,7 +13,7 @@
         #math {tuna.jing} ${tuna.jing.usable};
     };
 
-    #show tuna.jing.till_upgrade:${tuna.jing.till_upgrade}, tuna.jing:${tuna.jing};    
+    #show {<efa>tuna.jing.till_upgrade:${tuna.jing.till_upgrade}, tuna.jing:${tuna.jing}};
     tuna ${tuna.jing};
 };
 
