@@ -4,9 +4,7 @@
 
 #alias {_sleep} {
     ch; #delay 3 {
-        sk;hp; #delay 1 {
-            #echo {%c不睡不行，太累了...} {light yellow}; sleep;
-            } 
+        sk;hp; #delay 1 {sleep;} 
         }
 };
 
@@ -20,5 +18,3 @@
         #echo {%c使用方法：loadbot [dazuo|tuna|lian|lingwu|xue] } {light yellow};
     };
 }
-
-#NOP #action {^你和师父切磋了%*消耗了大量潜能} {stopbot};

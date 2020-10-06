@@ -13,14 +13,12 @@
         #var {xue.skill} {%2};
         #show {<efa>master:${xue.master} skill:${xue.skill}};
         #show {<efa>开始跟师傅学习...} ;
-        set brief 3;
     };
 };
 
 #alias {stopbot} {
     #show {<efa>结束学习...};
     #class lianxi kill;
-    set brief 1;
 };
 
 #action {^开始跟师傅学习...$} { #delay 3 { _lian } };
@@ -31,5 +29,6 @@
 #action {^你的内力不够。$} { _sleep };
 #action {^( 你的内力已经枯竭，不能施用内功。)$}{ _sleep };
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$}  { #delay 3 {_lian } };
+#action {^你和师父切磋了%*消耗了大量潜能} {stopbot};
 
 #class lianxi close;
