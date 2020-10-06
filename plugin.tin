@@ -12,8 +12,8 @@
 #alias {stoff} { plugin unload stat }
 #alias {gton} { plugin load goto }
 #alias {gtoff} { plugin unload goto }
-#alias {emon} { plugin load goto }
-#alias {emoff} { plugin unload goto }
+#alias {emon} { plugin load emote }
+#alias {emoff} { plugin unload emote }
 
 #alias {plugin} {
     #switch {"%1"} {
