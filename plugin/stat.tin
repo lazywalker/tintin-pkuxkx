@@ -99,7 +99,7 @@
                 #var {st.text.water} { @_colorize{${st.water_avail}; ${st.water}} };
 
                 #prompt {^#%*,%*} {
-                    >>🧑<199>【<859>精神<899>】${st.text.jin}[${st.jing_max_avail}%] 【<849>气血<899>】${st.text.qi}[${st.qi_max_avail}%] 【<859>精力<899>】${st.text.jingli}【<849>内力<899>】${st.text.neili}【<829>食物<899>】${st.text.food}【<829>饮水<899>】${st.text.water}<099>
+                    >>🧑<199>【<859>精神<899>】${st.text.jin}[${st.jing_max_avail}%] 【<849>气血<899>】${st.text.qi}[${st.qi_max_avail}%] 【<859>精力<899>】${st.text.jingli}【<849>内力<899>】${st.text.neili}【<859>食物<899>】${st.text.food}【<849>饮水<899>】${st.text.water}<099>
                     } {-2};
 
                 #unaction {^#%*,%*,%*,%*,%*,%*$};
