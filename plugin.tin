@@ -42,4 +42,8 @@
     };
 };
 
+#NOP enabled those plugins by default;
+ston;
+gton;
+
 #class plugin close;
