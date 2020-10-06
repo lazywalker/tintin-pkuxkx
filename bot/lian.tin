@@ -31,7 +31,6 @@
 
         #show {<efa>skill: ${lian.skill}};
         #show {<efa>开始练习高级武功...} ;
-        set brief 3;
     };
     #else {
         #echo {%c使用方法：startbot [staff|blade|dodge|strike|parry|hand] } {light yellow};
@@ -41,7 +40,6 @@
 #alias {stopbot} {
     #show {<efa>结束练习高级武功...};
     #class lianxi kill;
-    set brief 1;
 };
 
 #action {^开始练习高级武功...$} { yun qi; _lian};
