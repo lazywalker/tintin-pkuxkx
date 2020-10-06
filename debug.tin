@@ -1,0 +1,18 @@
+#alias {debugon} {
+    #config {VERBOSE} {ON};
+    #DEBUG {LIST} {ON};
+    #CONFIG {VERBOSE} {ON};
+    #DEBUG {ALL} {ON};
+    #DEBUG;
+
+    #log APPEND {log/debug.log};
+    #debug {ALL} {LOG};
+};
+
+#alias {debugoff} {
+    #config {VERBOSE} {OFF};
+    #DEBUG {LIST} {OFF};
+    #CONFIG {VERBOSE} {OFF};
+    #DEBUG {ALL} {OFF};
+    #DEBUG;
+};
