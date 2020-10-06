@@ -1,3 +1,5 @@
+#read {debug.tin};
+#read {log.tin};
 #split
 
 #nop 断线事件;
@@ -10,7 +12,6 @@
     #class tmp kill;
     #read {pkuxkx.tin};
     #read {config.tin};
-    #read {log.tin};
     #read {cmd.tin};
     #read {action.tin};
     #read {bot.tin};
@@ -22,7 +23,8 @@
 #alias reload {
     #kill {all};
     #show {<efa>TT SCRIPTS RELOADED};
-    #read init.tin
+    #read init.tin;
+    pkuxkx;
 };
 
 #tab {read};
