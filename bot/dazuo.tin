@@ -1,21 +1,22 @@
 #class lianxi open;
-#var dazuo.qi 10;
 
 #alias {_lian} {
     stat_update;
-    #delay 0.1 {
+    #delay 1 {
         #math {dazuo.qi.till_upgrade} {${st.neili_max}*2 - ${st.neili}};
         #math {dazuo.qi.usable} {${st.qi}*0.90};
 
-        #if {${dazuo.qi.till_upgrade} <= 10 & ${st.qi} > 10} {
-            #var {dazuo.qi} 10;
-        };#elseif {${dazuo.qi.till_upgrade} < ${dazuo.qi.usable}}{
-            #math {dazuo.qi} ${dazuo.qi.till_upgrade};
+        #if {${dazuo.qi.till_upgrade} < ${dazuo.qi.usable}} {
+            #NOP 快速打坐;
+            #var {dazuo.qi} ${dazuo.qi.till_upgrade};
+        };#elseif {{dazuo.qi.usable} > 50} {
+            #var {dazuo.qi} ${dazuo.qi.usable};
         };#else {
-            #math {dazuo.qi} ${dazuo.qi.usable};
+            #NOP 涓流打坐;
+            #var {dazuo.qi} 10;
         };
 
-        #show {<efa>dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi:${dazuo.qi}};
+        #show {<efa>dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi.usable:${dazuo.qi.usable}, dazuo.qi:${dazuo.qi}};
         dazuo ${dazuo.qi};
     }
 };
@@ -29,11 +30,15 @@
     #class lianxi kill;
 };
 
-#action {^开始打坐...$} { _lian };
-#NOP #action {^你的内力增加了！！$} { ch; #delay 3 {_lian} };
+#action {^开始打坐...$} { dazuo max };
+#action {^你的内力增加了！！$} { halt;_sleep };
 #NOP #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {_lian} };
-#action {^你运功完毕，深深吸了口气，站了起来。$} { _lian  };
+#action {^你运功完毕，深深吸了口气，站了起来。$} { #delay 3 {dazuo max}  };
+#action {^你现在内力接近圆满状态。$} { dazuo 10  };
+#action {^你现在气血严重不足，无法满足打坐最小要求。$} { #delay 5 {dazuo max} };
 #action {^你现在的气太少了，无法产生内息运行全身经脉。$} { _sleep };
-#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { _lian  };
+#action {^你现在精不够，无法控制内息的流动！$} { _sleep };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { dazuo max  };
+#action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
 #class lianxi close;
