@@ -1,0 +1,33 @@
+#action {^【%*】%*} {
+    #line log {log/channel.log};
+    #line gag;
+};
+
+#alias {^l{(ook)?}$} {
+    #var {room-desc} {true};
+    #send {look};
+    #delay {1} {#var {room-desc} {false}};
+    #line log {log/chars.log} {========};
+};
+
+#alias {^{e|w|n|s|u|d|ne|nw|se|sw|nd|nu|sd|su|wd|wu|ed|eu}$} {
+    #var {room-desc} {true};
+    #send {%0};
+    #delay {1} {#var {room-desc} {false}};
+    #line log {log/chars.log} {========};
+};
+
+#event {RECEIVED LINE} {
+    #if {"${room-desc}" == "true"} {
+        #if {"%0" == "{\s+}%*" | "%0" == "{%*}" | "%0" == "{%* - }"} {
+            #if {"%0" == "%*(%*)%*"} {
+                #line log {log/chars.log};
+                #NOP #line gag;
+            };
+            #else {
+                #line log {log/look.log};
+                #NOP #line gag;
+            }
+        };
+    };
+}
