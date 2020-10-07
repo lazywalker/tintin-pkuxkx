@@ -2,19 +2,22 @@
 #var dazuo.qi 10;
 
 #alias {_lian} {
-    #math {dazuo.qi.till_upgrade} {${st.neili_max}*2 - ${st.neili}};
-    #math {dazuo.qi.usable} {${st.qi}*0.90};
+    stat_update;
+    #delay 0.1 {
+        #math {dazuo.qi.till_upgrade} {${st.neili_max}*2 - ${st.neili}};
+        #math {dazuo.qi.usable} {${st.qi}*0.90};
 
-    #if {${dazuo.qi.till_upgrade} <= 10 & ${st.qi} > 10} {
-        #var {dazuo.qi} 10;
-    };#elseif {${dazuo.qi.till_upgrade} < ${dazuo.qi.usable}}{
-        #math {dazuo.qi} ${dazuo.qi.till_upgrade};
-    };#else {
-        #math {dazuo.qi} ${dazuo.qi.usable};
-    };
+        #if {${dazuo.qi.till_upgrade} <= 10 & ${st.qi} > 10} {
+            #var {dazuo.qi} 10;
+        };#elseif {${dazuo.qi.till_upgrade} < ${dazuo.qi.usable}}{
+            #math {dazuo.qi} ${dazuo.qi.till_upgrade};
+        };#else {
+            #math {dazuo.qi} ${dazuo.qi.usable};
+        };
 
-    #show {<efa>dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi:${dazuo.qi}};
-    dazuo ${dazuo.qi};
+        #show {<efa>dazuo.qi.till_upgrade:${dazuo.qi.till_upgrade}, dazuo.qi:${dazuo.qi}};
+        dazuo ${dazuo.qi};
+    }
 };
 
 #alias {startbot} {
@@ -31,6 +34,6 @@
 #NOP #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {_lian} };
 #action {^你运功完毕，深深吸了口气，站了起来。$} { _lian  };
 #action {^你现在的气太少了，无法产生内息运行全身经脉。$} { _sleep };
-#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {_lian}  };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { _lian  };
 
 #class lianxi close;

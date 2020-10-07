@@ -2,19 +2,22 @@
 #var tuna.jing 10;
 
 #alias {_lian} {
-    #math {tuna.jing.till_upgrade} {${st.jingli_max}*2 - ${st.jingli}};
-    #math {tuna.jing.usable} {${st.jing}*0.85};
+    stat_update;
+    #delay 0.1 {
+        #math {tuna.jing.till_upgrade} {${st.jingli_max}*2 - ${st.jingli}};
+        #math {tuna.jing.usable} {${st.jing}*0.85};
 
-    #if {${tuna.jing.till_upgrade} <= 10 & ${st.jing} > 10} {
-        #var {tuna.jing} 10;
-    };#elseif {${tuna.jing.till_upgrade} < ${tuna.jing.usable}}{
-        #math {tuna.jing} ${tuna.jing.till_upgrade};
-    };#else {
-        #math {tuna.jing} ${tuna.jing.usable};
-    };
+        #if {${tuna.jing.till_upgrade} <= 10 & ${st.jing} > 10} {
+            #var {tuna.jing} 10;
+        };#elseif {${tuna.jing.till_upgrade} < ${tuna.jing.usable}}{
+            #math {tuna.jing} ${tuna.jing.till_upgrade};
+        };#else {
+            #math {tuna.jing} ${tuna.jing.usable};
+        };
 
-    #show {<efa>tuna.jing.till_upgrade:${tuna.jing.till_upgrade}, tuna.jing:${tuna.jing}};
-    tuna ${tuna.jing};
+        #show {<efa>tuna.jing.till_upgrade:${tuna.jing.till_upgrade}, tuna.jing:${tuna.jing}};
+        tuna ${tuna.jing};
+    }
 };
 
 #alias {startbot} {
@@ -31,7 +34,7 @@
 #action {^你吐纳完毕，睁开双眼，站了起来。$} { _lian  };
 #action {^你正在运行内功加速全身气血恢复，无法静下心来搬运真气。$} { #delay 10 {_lian{}} };
 #action {^你现在精不足，无法修行精力！$} { _sleep };
-#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {_lian}  };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { _lian  };
 #action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
 #class lianxi close;

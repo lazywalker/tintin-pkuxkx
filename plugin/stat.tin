@@ -1,49 +1,11 @@
 #send {set hpbrief long,report};
-#gag {>};
-
-#alias {capture_multiline} {
-    #var capture_till {%0};
-    #var line { };
-    #var lines { };
-    #class multiline_capture read plugin/stat_capture.tin;
-};
-
-#alias {_stbar_update2} {
-    capture_multiline >;
-    hpbrief %0;
-};
-
-#NOP #经验,潜能,最大内力,内力,最大精力,精力
-#NOP #气血上限,最大气血,气血,精神上限,最大精神,精神
-#NOP #真气,战意,食物,饮水,非战斗/战斗中,不忙/忙;
-#action {^%*#%1,%2,%3,%4,%5,%6#%7,%8,%9,%10,%11,%12#%13,%14,%15,%16,%17,%18$} {
-    #var {st.qi_max} {%8};
-    #var {st.qi} {%9};
-    #var {st.jing_max} {%11};
-    #var {st.jing} {%12};
-    #var {st.neili_max} {%3};
-    #var {st.neili} {%4};
-    #var {st.jingli_max} {%5};
-    #var {st.jingli} {%6};
-    #var {st.food} {%15};
-    #var {st.water} {%16};
-    #var {st.incombat} {%17};
-    #var {st.busy} {%18};
-
-    #math {st.jing_max_avail} {%10*100 / %11};
-    #math {st.qi_max_avail} {%7*100 / %8};
-
-    #prompt {^%*#%*,%*} {
-        >>🧑<199>【<849>精神<899>】%12/%11 [${st.jing_max_avail}%]【<819>气血<899>】%9/%8 [${st.qi_max_avail}%]【<859>精力<899>】%6/%5【<819>内力<899>】%4/%3【<829>食物<899>】%15【<829>饮水<899>】%16【<849>经验<899>】%1【<869>潜能<899>】%2 <099>
-        } {-2};
-}
 
 #function {_colorize} {
     #local {color_dry} {<819>};
     #local {color_half} {<839>};
     #local {color_full} {<829>};
     #local {value} %2;
-    #if {%3 == 2} {#local {color_full} {<869>}};
+    #if {"%3" == "2"} {#local {color_full} {<869>}};
 
     #if {%1 <= 40} {#local {color} ${color_dry}}; 
     #elseif {%1 <= 70} {#local {color} ${color_half}};
@@ -52,7 +14,7 @@
     #return {${color}${value}<899>}
 }
 
-#alias {_stbar_update} {
+#alias {stat_update} {
     #NOP #经验,潜能,最大内力,内力,最大精力,精力;
     #NOP #气血上限,最大气血,气血,精神上限,最大精神,精神;
     #NOP #真气,战意,食物,饮水,非战斗/战斗中,不忙/忙;
@@ -110,4 +72,8 @@
     hpbrief;
 };
 
-#ticker {update_status_bar} { _stbar_update } {1};
+#ticker {update_status_bar} {
+    #gag {>};
+    stat_update;
+    #delay 1 {#ungag {>}};
+} {3};
