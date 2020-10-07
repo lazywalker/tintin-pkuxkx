@@ -4,6 +4,7 @@
 #act {你似乎十分疲惫，看来需要好好休息了} {yun recover};
 #act {你气喘嘘嘘，看起来状况并不太好} {yun recover};
 #act {你看起来已经力不从心了} {yun recover};
+#act {^( 你摇头晃脑、歪歪斜斜地站都站不稳，眼看就要倒在地上。)$} {yun recover};
 
 #act {^你有很长一段时间没有备份档案了} {backup};
 
