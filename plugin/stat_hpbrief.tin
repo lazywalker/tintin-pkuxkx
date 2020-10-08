@@ -25,8 +25,8 @@
             #var {st.incombat} {%%%5};
             #var {st.busy} {%%%6};
 
-            #math {st.jing_max_avail} {${st.jing_limit}*100 / ${st.jing_max}};
-            #math {st.qi_max_avail} {${st.qi_limit}*100 / ${st.qi_max}};
+            #math {st.jing_max_avail} {${st.jing_max}*100 / ${st.jing_limit}};
+            #math {st.qi_max_avail} {${st.qi_max}*100 / ${st.qi_limit}};
 
             #NOP 数值百分比;
             #math {st.jing_avail} {${st.jing}*100 / ${st.jing_max}};
