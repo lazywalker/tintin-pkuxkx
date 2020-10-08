@@ -1,3 +1,7 @@
+#system {> log/channel.log};
+#system {> log/chars.log};
+#system {> log/look.log};
+
 #action {^【%*】%*} {
     #line log {log/channel.log};
     #line gag;

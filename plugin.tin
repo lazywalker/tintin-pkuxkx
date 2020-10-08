@@ -1,4 +1,3 @@
-#NOP TODO: plugin load|reload|unload
 #class plugin open;
 #tab {plugin};
 #tab {ston};
@@ -8,12 +7,14 @@
 #tab {emon};
 #tab {emoff};
 
-#alias {ston} { plugin load stat }
-#alias {stoff} { plugin unload stat }
-#alias {gton} { plugin load goto }
-#alias {gtoff} { plugin unload goto }
-#alias {emon} { plugin load emote }
-#alias {emoff} { plugin unload emote }
+#alias {ston} { plugin load stat };
+#alias {stoff} { plugin unload stat };
+#alias {gton} { plugin load goto };
+#alias {gtoff} { plugin unload goto };
+#alias {emon} { plugin load emote };
+#alias {emoff} { plugin unload emote };
+#alias {paneon} { plugin load pane };
+#alias {paneoff} { plugin unload pane };
 
 #alias {plugin} {
     #switch {"%1"} {
@@ -44,7 +45,7 @@
 
 #NOP enabled those plugins by default;
 plugin load beautify;
-beautify
+beautify;
 ston;
 gton;
 
