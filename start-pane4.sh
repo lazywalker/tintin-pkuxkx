@@ -1,4 +1,25 @@
 #!/bin/bash
+
+# 
+# +----------------------+--------------+
+# |                      |              |
+# |   Communication      |   Look       |
+# |   Channels           |              |
+# |                      |              |
+# +-------------------------------------+
+# |                      |              |
+# |                      |  (N)PCs from |
+# |                      |  location    |
+# |                      |  output      |
+# |                      |              |
+# |  Main window         |              |
+# |                      |              |
+# +----------------------+              |
+# | Command bar          |              |
+# +----------------------+--------------+
+# 
+
+
 SESSION=pku-pane4
 
 tmux new-session -d -s $SESSION "tt++ init.tin"
