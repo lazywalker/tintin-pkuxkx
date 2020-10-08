@@ -1,4 +1,5 @@
 #alias {debugon} {
+    #system {> log/debug.log};
     #config {VERBOSE} {ON};
     #DEBUG {LIST} {ON};
     #CONFIG {VERBOSE} {ON};
