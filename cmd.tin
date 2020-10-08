@@ -15,10 +15,6 @@
 #alias {yp} { yun powerup; }
 #alias {yi} { yun inspire; }
 #alias {yh} { yun heal; }
-#alias {w1} { unwield all; wield stick; }
-#alias {w2} { unwield all; wield blade; }
-#alias {w3} { unwield all; bei none; bei strike hand; }
-#alias {w0} { unwield all; bei none; bei strike; }
 
 #alias {ch} { #5 drink jiudai; #5 eat gan liang; }
 #alias {getdress} {
