@@ -14,66 +14,12 @@
     #return {${color}${value}<899>}
 }
 
+#class stat_hpbrief read plugin/stat_hpbrief.tin;
+
 #alias {stat_update} {
-    #NOP #经验,潜能,最大内力,内力,最大精力,精力;
-    #NOP #气血上限,最大气血,气血,精神上限,最大精神,精神;
-    #NOP #真气,战意,食物,饮水,非战斗/战斗中,不忙/忙;
-    #action {^#%*,%*,%*,%*,%*,%*$} {
-        #var {st.exp} {%%1};
-        #var {st.qianneng} {%%2};
-        #var {st.neili_max} {%%3};
-        #var {st.neili} {%%4};
-        #var {st.jingli_max} {%%5};
-        #var {st.jingli} {%%6};
-        #unaction {^#%*,%*,%*,%*,%*,%*$};
-        #action {^#%*,%*,%*,%*,%*,%*$} {
-            #var {st.qi_limit} {%%%1};
-            #var {st.qi_max} {%%%2};
-            #var {st.qi} {%%%3};
-            #var {st.jing_limit} {%%%4};
-            #var {st.jing_max} {%%%5};
-            #var {st.jing} {%%%6};
-            #unaction {^#%*,%*,%*,%*,%*,%*$};
-            #action {^#%*,%*,%*,%*,%*,%*$} {
-                #var {st.zhenqi} {%%%%1};
-                #var {st.zhanyi} {%%%%2};
-                #var {st.food} {%%%%3};
-                #var {st.water} {%%%%4};
-                #var {st.incombat} {%%%%5};
-                #var {st.busy} {%%%%6};
-
-                #math {st.jing_max_avail} {${st.jing_limit}*100 / ${st.jing_max}};
-                #math {st.qi_max_avail} {${st.qi_limit}*100 / ${st.qi_max}};
-
-                #NOP 数值百分比;
-                #math {st.jing_avail} {${st.jing}*100 / ${st.jing_max}};
-                #math {st.qi_avail} {${st.qi}*100 / ${st.qi_max}};
-                #math {st.jingli_avail} {${st.jingli}*100 / ${st.jingli_max}};
-                #math {st.neili_avail} {${st.neili}*100 / ${st.neili_max}};
-                #math {st.food_avail} {${st.food}*100 / 400};
-                #math {st.water_avail} {${st.water}*100 / 400};
-                #NOP 数值颜色显示;
-                #var {st.text.jin} { @_colorize{${st.jing_avail}; {${st.jing}/${st.jing_max}}} };
-                #var {st.text.qi} { @_colorize{${st.qi_avail}; {${st.qi}/${st.qi_max}}} };
-                #var {st.text.jingli} { @_colorize{${st.jingli_avail}; {${st.jingli}/${st.jingli_max}}; {2}} };
-                #var {st.text.neili} { @_colorize{${st.neili_avail}; {${st.neili}/${st.neili_max}}} };
-                #var {st.text.food} { @_colorize{${st.food_avail}; ${st.food}} };
-                #var {st.text.water} { @_colorize{${st.water_avail}; ${st.water}} };
-
-                #prompt {^#%*,%*} {
-                    >>🧑<199>【<859>精神<899>】${st.text.jin}[${st.jing_max_avail}%] 【<849>气血<899>】${st.text.qi}[${st.qi_max_avail}%] 【<859>精力<899>】${st.text.jingli}【<849>内力<899>】${st.text.neili}【<859>食物<899>】${st.text.food}【<849>饮水<899>】${st.text.water}<099>
-                    } {-2};
-
-                #unaction {^#%*,%*,%*,%*,%*,%*$};
-            };
-        }
-    };
-
     hpbrief;
 };
 
 #ticker {update_status_bar} {
-    #gag {>};
     stat_update;
-    #delay 1 {#ungag {>}};
-} {3};
+} {5};
