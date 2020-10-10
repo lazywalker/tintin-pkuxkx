@@ -1,11 +1,22 @@
 #class lianxi open;
 
 #alias {_lian} {
-    du shu for 10;
+    #if {${du.book} == "shediao"} {
+        du ${du.book} 50;
+    }; #else {
+        du ${du.book} for 10;
+    }
 };
 
 #alias {startbot} {
-    #show {<efa>开始读书...};
+    #if {"%1" == ""} {
+        #echo {%c使用方法：startbot [book id(英文)]} {light yellow};
+    };
+    #else {
+        #var {du.book} {%1};
+        #show {<efa>book:${du.book}};
+        #show {<efa>开始读书...};
+    };
 };
 
 #alias {stopbot} {
@@ -15,6 +26,8 @@
 
 #action {^开始读书...$} {_lian};
 #action {^你研读了十次有关%1的技巧，似乎有点心得。$} { #delay 2 {_lian} };
+#action {^你已经很累了，歇歇再读吧，身体要紧。$} { yun regenerate };
+
 #action {^你现在过于疲倦，无法专心下来研读新知。$} { yun regenerate };
 #action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };
 #action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} };
