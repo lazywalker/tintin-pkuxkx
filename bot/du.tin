@@ -1,0 +1,27 @@
+#class lianxi open;
+
+#alias {_lian} {
+    du shu for 10;
+};
+
+#alias {startbot} {
+    #show {<efa>开始读书...};
+};
+
+#alias {stopbot} {
+    #show {<efa>结束开始读书...};
+    #class lianxi kill;
+};
+
+#action {^开始读书...$} {_lian};
+#action {^你研读了十次有关%1的技巧，似乎有点心得。$} { #delay 2 {_lian} };
+#action {^你现在过于疲倦，无法专心下来研读新知。$} { yun regenerate };
+#action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };
+#action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} };
+
+#action {^你的内力不够。$} { _sleep };
+#action {^( 你的内力已经枯竭，不能施用内功。)$} { _sleep };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {_lian}};
+
+
+#class lianxi close;

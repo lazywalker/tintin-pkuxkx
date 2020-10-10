@@ -9,12 +9,12 @@
 };
 
 #alias {loadbot} {
-    #if {"%1" == "dazuo" | "%1" == "tuna"  | "%1" == "lian" | "%1" == "lingwu" | "%1" == "xue"} {
+    #if {"%1" == "dazuo" | "%1" == "tuna"  | "%1" == "lian" | "%1" == "lingwu" | "%1" == "xue" | "%1" == "du"} {
         #show {<efa>载入%1机器人…};
         #read {bot/%1.tin};
         #show {<efa>载入完毕};
     };
     #else {
-        #echo {%c使用方法：loadbot [dazuo|tuna|lian|lingwu|xue] } {light yellow};
+        #echo {%c使用方法：loadbot [dazuo|tuna|lian|lingwu|xue|du] } {light yellow};
     };
 }
