@@ -1,4 +1,5 @@
 #class lianxi open;
+#var {du.delay} {2};
 
 #alias {_lian} {
     #if {"${du.book}" == "shediao"} {
@@ -10,11 +11,14 @@
 
 #alias {startbot} {
     #if {"%1" == ""} {
-        #echo {%c使用方法：startbot [book id(英文)]} {light yellow};
+        #echo {%c使用方法：startbot [book id(英文)] <每次间隔秒数>} {light yellow};
     };
     #else {
         #var {du.book} {%1};
-        #show {<efa>book:${du.book}};
+        #if {"%2" != ""} {
+            #var {du.delay} {%2};
+        };
+        #show {<fca>book:${du.book}|delay:${du.delay}};
         #show {<efa>开始读书...};
     };
 };
@@ -25,12 +29,12 @@
 };
 
 #action {^开始读书...$} {_lian};
-#action {^你研读了十次有关%1的技巧，似乎有点心得。$} { #delay 2 {_lian} };
+#action {^你研读了十次有关%1的技巧，似乎有点心得。$} { #delay ${du.delay} {_lian} };
 #action {^你已经很累了，歇歇再读吧，身体要紧。$} { yun regenerate };
 
 #action {^你现在过于疲倦，无法专心下来研读新知。$} { yun regenerate };
 #action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };
-#action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} };
+#action {^你略一凝神，精神看起来好多了。$} { #delay ${du.delay} {_lian} };
 
 #action {^你的内力不够。$} { _sleep };
 #action {^( 你的内力已经枯竭，不能施用内功。)$} { _sleep };

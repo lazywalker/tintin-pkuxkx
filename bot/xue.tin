@@ -15,7 +15,7 @@
         #if {"%3" != ""} {
             #var {xue.delay} {%3};
         };
-        #show {<fca>master:${xue.master} skill:${xue.skill} delay:${xue.delay}};
+        #show {<fca>master:${xue.master}|skill:${xue.skill}|delay:${xue.delay}};
         #show {<efa>开始跟师傅学习...} ;
     };
 };
