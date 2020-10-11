@@ -1,4 +1,5 @@
 #class lianxi open;
+#var {xue.delay} {3};
 
 #alias {_lian} {
     xue ${xue.master} for ${xue.skill} 10;
@@ -6,12 +7,15 @@
 
 #alias {startbot} {
     #if {"%1" == "" | "%2" == ""} {
-        #echo {%c使用方法：startbot [师傅id(英文)] [技能id(英文)] } {light yellow};
+        #echo {%c使用方法：startbot [师傅id(英文)] [技能id(英文)] <每次间隔秒数>} {light yellow};
     };
     #else {
         #var {xue.master} {%1};
         #var {xue.skill} {%2};
-        #show {<efa>master:${xue.master} skill:${xue.skill}};
+        #if {"%3" != ""} {
+            #var {xue.delay} {%3};
+        };
+        #show {<fca>master:${xue.master} skill:${xue.skill} delay:${xue.delay}};
         #show {<efa>开始跟师傅学习...} ;
     };
 };
@@ -21,14 +25,16 @@
     #class lianxi kill;
 };
 
-#action {^开始跟师傅学习...$} { #delay 3 { _lian } };
-#action {^你共请教了十次$} { #delay 3 { _lian } };
+#action {^开始跟师傅学习...$} { #delay ${xue.delay} { _lian } };
+#action {^你共请教了十次$} { #delay ${xue.delay} { _lian } };
 #action {^你今天太累了，结果什么也没有学到。$} { yun regenerate };
-#action {^你略一凝神，精神看起来好多了。$} { #delay 2 {_lian} };
+#action {^你略一凝神，精神看起来好多了。$} { #delay ${xue.delay} {_lian} };
 
 #action {^你的内力不够。$} { _sleep };
 #action {^( 你的内力已经枯竭，不能施用内功。)$}{ _sleep };
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$}  { #delay 3 {_lian } };
 #action {^你和师父切磋了%*消耗了大量潜能} {stopbot};
+
+#action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
 #class lianxi close;
