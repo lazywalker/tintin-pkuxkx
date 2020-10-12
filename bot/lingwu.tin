@@ -39,6 +39,7 @@
 #action {^你领悟了%1次%2。$} { #delay ${lingwu.delay} {_lian} };
 #action {^你现在过于疲倦,无法静下心来领悟功夫！$} { yun regenerate };
 #action {^你正在运行真气加速气血恢复，无法再分出内力来。$} { #delay 30 {yun regenerate;} };
+#action {^你现在精力充沛。$} {_lian};
 #action {^你略一凝神，精神看起来好多了。$} { #delay ${lingwu.delay}  {_lian} };
 #action {^你的%1太低了。$} { #delay 5 {_lian} };
 
