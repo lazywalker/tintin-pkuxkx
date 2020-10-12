@@ -1,4 +1,5 @@
 #class lianxi open;
+#var {lian.delay} {2};
 
 #alias {_lian} {
     lian ${lian.skill} 50;
@@ -26,14 +27,17 @@
             #class lianxi kill;
             loadbot lingwu; 
             #show {<efa>正在切换到基础功夫领悟...};
-            #delay 1 {startbot ${lian.skill}};
+            #delay 1 {startbot ${lian.skill} ${lian.delay}};
         };
 
-        #show {<efa>skill: ${lian.skill}};
+        #if {"%2" != ""} {
+            #var {lian.delay} {%2};
+        };
+        #show {<efa>skill: ${lian.skill}, delay: ${lian.delay}};
         #show {<efa>开始练习高级武功...} ;
     };
     #else {
-        #echo {%c使用方法：startbot [staff|blade|dodge|strike|parry|hand] } {light yellow};
+        #echo {%c使用方法：startbot [staff|blade|dodge|strike|parry|hand]  <每次间隔秒数>} {light yellow};
     };
 };
 
@@ -43,7 +47,7 @@
 };
 
 #action {^开始练习高级武功...$} { yun qi; _lian};
-#action {^你%1练习%2，获得了%3进步！$} { #delay 2 {_lian} };
+#action {^你%1练习%2，获得了%3进步！$} { #delay ${lian.delay} {_lian} };
 
 #action {^你减缓真气运行，让气血运行恢复正常。$} {
     #if {"${lian.skill}" == "dodge" | "${lian.skill}" == "staff" | "${lian.skill}" == "blade"} {
@@ -57,5 +61,6 @@
 
 #action {^( 你的内力已经枯竭，不能施用内功。)$} { _sleep };
 #action {你精血不足，翻来覆去无法入眠!} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep} };
+#action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
 #class lianxi close;

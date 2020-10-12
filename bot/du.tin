@@ -24,7 +24,7 @@
 };
 
 #alias {stopbot} {
-    #show {<efa>结束开始读书...};
+    #show {<efa>结束读书...};
     #class lianxi kill;
 };
 
