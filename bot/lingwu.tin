@@ -10,16 +10,18 @@
 #alias {startbot} {
     #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "force" |"%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
         #var {lingwu.skill} {%1}; 
-        #action {^你的基本功夫比你的高级功夫还高！$} { 
-            #class lianxi kill;
-            loadbot lian; 
-            #show {<efa>正在切换到高级功夫练习...};
-            #delay 1 {startbot ${lingwu.skill} ${lingwu.delay}};
-        };
 
         #if {"%2" != ""} {
             #var {lingwu.delay} {%2};
         };
+
+        #action {^你的基本功夫比你的高级功夫还高！$} { 
+            #class lianxi kill;
+            loadbot lian; 
+            #show {<efa>正在切换到高级功夫练习...};
+            #delay 1 {startbot ${lingwu.skill} %2};
+        };
+
         #show {<efa>skill: ${lingwu.skill}, delay: ${lingwu.delay}};
         #show {<efa>开始领悟基础武功...};
     };

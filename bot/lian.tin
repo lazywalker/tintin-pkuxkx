@@ -23,16 +23,17 @@
             #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {yun qi; _lian}};
         };
 
+        #if {"%2" != ""} {
+            #var {lian.delay} {%2};
+        };
+        
         #action {^你需要提高基本功，不然练得再多也没有用。$} { 
             #class lianxi kill;
             loadbot lingwu; 
             #show {<efa>正在切换到基础功夫领悟...};
-            #delay 1 {startbot ${lian.skill} ${lian.delay}};
+            #delay 1 {startbot ${lian.skill} %2};
         };
 
-        #if {"%2" != ""} {
-            #var {lian.delay} {%2};
-        };
         #show {<efa>skill: ${lian.skill}, delay: ${lian.delay}};
         #show {<efa>开始练习高级武功...} ;
     };
