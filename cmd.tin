@@ -48,3 +48,25 @@
 #tab {lianxi}
 #tab {stoplianxi}
 
+#alias gche {gan che to %1}
+#alias ge {gan che to east}
+#alias genter {gan che to enter}
+#alias geu {gan che to eastup}
+#alias gn {gan che to north}
+#alias gne {gan che to northeast}
+#alias gnu {gan che to northup}
+#alias gnw {gan che to northwest}
+#alias gout {gan che to out}
+#alias gs {gan che to south}
+#alias gse {gan che to southeast}
+#alias gsu {gan che to southup}
+#alias gsw {gan che to southwest}
+#alias gw {gan che to west}
+#alias gwu {gan che to westup}
+#alias ged {gan che to eastdown}
+#alias gnd {gan che to northdown}
+#alias gwd {gan che to westdown}
+#alias gsd {gan che to southdown}
+#alias ww {wield sword;wield dao}
+#alias gd {gan che to down}
+#alias gu {gan che to up}
