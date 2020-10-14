@@ -11,8 +11,9 @@
 
         #if {"${lian.skill}" == "hand" | "${lian.skill}" == "strike"} {
             #action {^你的内力不够练%*。$} { _sleep };
-            #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {yun qi; _lian} };
-            #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {dz} };
+            #nop #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {yun qi; _lian} };
+            #nop #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {dz} };
+            #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {yun qi; _lian} };
         };#else { 
             #if {"${lian.skill}" == "dodge"} {
                 #action {^你现在气血虚浮，练习不了%*。$} { #delay 5 {_lian} };
