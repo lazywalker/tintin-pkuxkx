@@ -35,6 +35,7 @@
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$}  { dazuo max };
 #action {^你运功完毕，深深吸了口气，站了起来。$} { #delay {xue.delay} {_lian}  };
 #action {^你和师父切磋了%*消耗了大量潜能} {stopbot};
+#action {^也许是缺乏实战经验，你对%1的回答总是无法领会。} {stopbot};
 
 #action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
