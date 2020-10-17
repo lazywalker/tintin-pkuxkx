@@ -1,4 +1,5 @@
 #act {看起来%1想杀死你！} {#bell; #bell};
+#act {^    %1发现的 慕容世家家贼(} {#bell};
 #NOP #act {你动作似乎开始有点不太灵光，但是仍然有条不紊} {yun recover};
 #NOP #act {你看起来可能有些累了} {yun recover};
 #act {你似乎十分疲惫，看来需要好好休息了} {yun recover};
