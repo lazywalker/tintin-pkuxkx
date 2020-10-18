@@ -46,6 +46,7 @@
 #NOP enabled those plugins by default;
 plugin load beautify;
 beautify;
+plugin load bwcx;
 ston;
 gton;
 
