@@ -1,0 +1,16 @@
+#alias {bwcx} {
+    #local keyword {%1};
+    #if { "$keyword" == "" && "$char[档案][门派]" != "" } {
+        #local keyword {$char[档案][门派]};
+    };
+
+    #class bwcx open;
+    #high {^天下争霸第%*$keyword%*$} {bold green};
+    #action {^开始后，自动安排好三天后的比武。$} {bwcx.return};
+    #action {^等等，系统喘气中......$}           {bwcx.retry};
+    #alias {bwcx.retry}     {#delay 5 bwcx};
+    #alias {bwcx.return}    {#class bwcx kill};
+    #class bwcx close;
+
+    #send bwcx;
+};
