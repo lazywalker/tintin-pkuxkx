@@ -11,7 +11,7 @@
 
 #action {^开始吐纳...$} { tuna max };
 #action {^你的精力上限增加了！！$} { halt;ch; #delay 3 {tuna max}};
-#action {^你吐纳完毕，睁开双眼，站了起来。$} { tuna max  };
+#action {^你吐纳完毕，睁开双眼，站了起来。$} { yun regenerate };
 #action {^你现在精力接近圆满状态。$} { tuna 10  };
 #action {^你正在运行内功加速全身气血恢复，无法静下心来搬运真气。$} { #delay 10 {tuna max} };
 #action {^你现在精严重不足，无法满足吐纳最小要求。$} { yun regenerate };
