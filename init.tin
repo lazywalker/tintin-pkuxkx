@@ -1,5 +1,10 @@
 #read {debug.tin};
 #read {log.tin};
+#read {config.tin};
+#read {cmd.tin};
+#read {action.tin};
+#read {bot.tin};
+#read {plugin.tin};
 #split
 
 #nop 断线事件;
@@ -17,11 +22,6 @@
 #alias pkuxkx {
     #class pkuxkx kill;
     #read {pkuxkx.tin};
-    #read {config.tin};
-    #read {cmd.tin};
-    #read {action.tin};
-    #read {bot.tin};
-    #read {plugin.tin};
 };
 #class pkuxkx close;
 
@@ -32,9 +32,8 @@
     #read init.tin;
 };
 
-#tab {read};
 #var READ_VERBOSE 1;
-#alias read {
+#alias debugread {
     #if { "$READ_VERBOSE" == "0" } {#read %1};
     #else {#line verbose #read %1};
 };
