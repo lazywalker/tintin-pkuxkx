@@ -4,6 +4,8 @@
 #alias {_lian} {
     #if {"${du.book}" == "shediao"} {
         du ${du.book} 50;
+    }; #elseif {"${du.book}" == "tianlong"} {
+        read ${du.book} 10;
     }; #else {
         du ${du.book} for 10;
     }
@@ -30,6 +32,7 @@
 
 #action {^开始读书...$} {_lian};
 #action {^你研读了十次有关%1的技巧，似乎有点心得。$} { #delay ${du.delay} {_lian} };
+#action {^你思索着小说中关于%2描述，对%3有一些新的理解。$} { #delay ${du.delay} {_lian} };
 #action {^你已经很累了，歇歇再读吧，身体要紧。$} { yun regenerate };
 
 #action {^你现在过于疲倦，无法专心下来研读新知。$} { yun regenerate };
