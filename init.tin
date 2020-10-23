@@ -4,12 +4,18 @@
 
 #nop 断线事件;
 #event {SESSION ACTIVATED} {
-    #if {"%0" == "gts"} {#read init.tin}
+    #if {"%0" == "gts"} {
+        #show {<efa>等待10s重连…};
+        #delay 10 {
+            #read init.tin;
+            pkuxkx;
+        };
+    }
 };
 
 #class pkuxkx open;
 #alias pkuxkx {
-    #class tmp kill;
+    #class pkuxkx kill;
     #read {pkuxkx.tin};
     #read {config.tin};
     #read {cmd.tin};
@@ -24,7 +30,6 @@
     #kill {all};
     #show {<efa>TT SCRIPTS RELOADED};
     #read init.tin;
-    pkuxkx;
 };
 
 #tab {read};
