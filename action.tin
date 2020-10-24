@@ -1,3 +1,4 @@
+#act {^劫匪突然从暗处跳了出来} {#bell; kill robber};
 #act {看起来%1想杀死你！} {#bell; #bell};
 #act {^    %1发现的 慕容世家家贼(} {#bell};
 #NOP #act {你动作似乎开始有点不太灵光，但是仍然有条不紊} {yun recover};
@@ -33,6 +34,7 @@
 #nop ##act {^ %*尸体(Corpse)$} {wait;get all from corpse};
 
 #act {^你从%*{搜出|拿出}一柄长剑。$} {drop changjian};
+#act {^你从%*{搜出|拿出}一把青锋剑。$} {drop qingfeng sword};
 
 #act {^你从%*{搜出|拿出}一柄长鞭。$} {drop whip};
 
