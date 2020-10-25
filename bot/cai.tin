@@ -1,0 +1,31 @@
+#class bot open;
+#NOP Location: 琴韵小筑码头
+
+#alias {_lian} {
+    #delay 1 {cai zhuang};
+};
+
+#alias {startbot} {
+    #show {<efa>开始踩桩...} ;
+};
+
+#alias {stopbot} {
+    #show {<efa>结束踩桩...};
+    #class bot kill;
+};
+
+#action {^开始踩桩...$} { _lian };
+#action {^你脚踩八卦方位，走得飞快。$} { _lian };
+#action {^你伸脚轻轻试了试木桩，心中有点发慌，忙缩了回来。$} { _sleep };
+#action {^慢慢地你终于又有了知觉....$} { ch;#delay 2 {_lian } };
+
+#action {^你精力不够，无法%*} { yun regenerate };
+#action {^你略一凝神，精神看起来好多了。$} { _lian };
+
+#action {^你的内力不够。$} { _sleep };
+#action {^( 你的内力已经枯竭，不能施用内功。)$}{ _sleep };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$}  { _lian };
+
+#action {^你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
+
+#class bot close;

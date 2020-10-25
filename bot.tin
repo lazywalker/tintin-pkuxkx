@@ -20,6 +20,7 @@
     {canwu}{参悟}
     {biwu}{比武场}
     {banzhuan}{搬砖}
+    {cai}{踩桩}
 };
 
 #alias {loadbot} {
