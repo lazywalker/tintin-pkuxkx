@@ -5,7 +5,9 @@
 #read {action.tin};
 #read {bot.tin};
 #read {plugin.tin};
+#read {pkuxkx.tin};
 #split
+
 
 #nop 断线事件;
 #event {SESSION ACTIVATED} {
@@ -21,7 +23,8 @@
 #class pkuxkx open;
 #alias pkuxkx {
     #class pkuxkx kill;
-    #read {pkuxkx.tin};
+    #session {pkuxkx} {mud.pkuxkx.net} {8080};
+    #pkuxkx ${login};
 };
 #class pkuxkx close;
 

@@ -3,9 +3,7 @@
 #tab {stopbot}
 
 #alias {_sleep} {
-    ch; #delay 3 {
-        sk;hp;#delay 1 {sleep} 
-        }
+    ch; #delay {2} { sk;hpbrief;sleep };
 };
 
 #variable {allbots} {

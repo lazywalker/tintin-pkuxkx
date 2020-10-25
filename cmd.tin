@@ -7,16 +7,16 @@
 
 #alias {tdm}{n;e;n;w;n;e;w;n}
 
-#alias {jiedu} { yun inspire; }
-#alias {xq} { yun recover; }
-#alias {xq2} { yun qi; }
-#alias {yj} { yun regenerate; }
-#alias {yj2} { yun jing; }
-#alias {yp} { yun powerup; }
-#alias {yi} { yun inspire; }
-#alias {yh} { yun heal; }
+#alias {jiedu} { yun inspire }
+#alias {xq} { yun recover }
+#alias {xq2} { yun qi }
+#alias {yj} { yun regenerate }
+#alias {yj2} { yun jing }
+#alias {yp} { yun powerup }
+#alias {yi} { yun inspire }
+#alias {yh} { yun heal }
 
-#alias {ch} { #5 drink jiudai; #5 eat gan liang; }
+#alias {ch} { #5 drink jiudai; #5 eat gan liang }
 #alias {getdress} {
     draw armor; draw head; draw cloth; draw surcoat; draw boots;
     wear armor; wear head; wear cloth; wear surcoat; wear boots;
@@ -45,8 +45,6 @@
 #tab {stopwalk}
 #tab {fill}
 #tab {fillall}
-#tab {lianxi}
-#tab {stoplianxi}
 
 #alias gche {gan che to %1}
 #alias ge {gan che to east}

@@ -38,7 +38,7 @@
 
 #action {^你的「%1」进步了！$} { fullsk.next };
 #action {^你已经达到你的技能等级极限！$} { 
-    #list {skills} delete ${ski};
+    #NOP #list {skills} delete ${ski};
     fullsk.next;
 };
 

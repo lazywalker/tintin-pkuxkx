@@ -65,12 +65,8 @@
 #action {你精血不足，翻来覆去无法入眠!} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep} };
 #action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
-#action {%*你要装备 parry 类武器才能练习} { unwield all;wield flute;_lian };
-#action {%*你要装备 sword 类武器才能练习} { unwield all;wield sword;_lian };
-#action {%*你要装备 blade 类武器才能练习} { unwield all;wield blade;_lian };
-#action {%*你要装备 whip 类武器才能练习} { unwield all;wield whip;_lian };
-#action {%*你要装备 flute 类武器才能练习} { unwield all;wield flute;_lian };
-#action {%*你要装备 staff 类武器才能练习} { unwield all;wield staff;_lian };
-#action {%*你必须空手才能练习} { unwield all;_lian };
+#action {^你要装备 %1 类武器才能练习%*} { unwield all;wield %1;_lian };
+#action {^你必须空手才能练习%*} { unwield all;_lian };
+#action {^练%*必须空手。$} { unwield all;_lian };
 
 #class lianxi close;

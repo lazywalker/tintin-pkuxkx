@@ -1,1 +1,2 @@
-#session pkuxkx mud.pkuxkx.net 8080;2;uid;passwd;
+#var {login} {2;uid;passwd};
+#var {char[档案][门派]} {丐帮};
