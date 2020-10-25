@@ -8,13 +8,34 @@
         }
 };
 
+#variable {allbots} {
+    {dazuo}{打坐} 
+    {tuna}{吐纳}
+    {lian}{练习}
+    {lingwu}{领悟}
+    {xue}{学技能} 
+    {du}{读书}
+    {fullsk}{自动练满技能}
+    {lsnow}{看雪}
+    {canwu}{参悟}
+    {biwu}{比武场}
+};
+
 #alias {loadbot} {
-    #if {"%1" == "dazuo" | "%1" == "tuna"  | "%1" == "lian" | "%1" == "lingwu" | "%1" == "xue" | "%1" == "du" | "%1" == "lsnow" | "%1" == "biwu" | "%1" == "fullsk" | "%1" == "canju"} {
-        #show {<efa>载入%1机器人…};
-        #read {bot/%1.tin};
-        #show {<efa>载入完毕};
+    #local {valid} {0};
+    #foreach {*allbots[%*]} {k} {
+        #if {"%1" == "${k}"} {
+            #math {valid} {1};
+            #show {<efa>载入%1机器人…};
+            #read {bot/%1.tin};
+            #show {<efa>载入完毕};
+        };
     };
-    #else {
-        #echo {%c使用方法：loadbot [dazuo|tuna|lian|lingwu|xue|du|lsnow|biwu|fullsk|canju } {light yellow};
+
+    #if {${valid} == 0} {
+        #echo {%c使用方法：loadbot <bot> } {light yellow};
+        #foreach {*allbots[%*]} {k} {
+            #echo {%c - ${k} $allbots[$k]} {light yellow};
+        };
     };
-}
+};

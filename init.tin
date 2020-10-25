@@ -12,7 +12,7 @@
     #if {"%0" == "gts"} {
         #show {<efa>等待10s重连…};
         #delay 10 {
-            #read init.tin;
+            #read {init.tin};
             pkuxkx;
         };
     }
@@ -29,11 +29,12 @@
 #alias reloadtt {
     #kill {all};
     #show {<efa>TT SCRIPTS RELOADED};
-    #read init.tin;
+    #read {init.tin};
+    #read {pkuxkx.tin};
 };
 
 #var READ_VERBOSE 1;
-#alias debugread {
+#alias dread {
     #if { "$READ_VERBOSE" == "0" } {#read %1};
     #else {#line verbose #read %1};
 };

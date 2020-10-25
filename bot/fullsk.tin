@@ -1,6 +1,9 @@
 #class fullsk open;
+#echo {%c使用方法：} {light yellow};
+#echo {%cfullsk.start \t 开始 } {light yellow};
+#echo {%cfullsk.stop \t 结束 } {light yellow};
 
-#list {skills} create {dodge} {force} {parry} {hand} {blade} {staff};
+#list {skills} create {strike} {dodge} {force} {parry} {hand} {staff};
 #var {ski} {0};
 #var {fullsk.delay} {0.5};
 
@@ -24,7 +27,7 @@
 #alias {fullsk.next} {
     #local {sk} @nextsk{};
     #show {<efa>正在切换功夫...};
-    #delay 1 {startbot ${sk} ${fullsk.delay}};
+    startbot ${sk} ${fullsk.delay};
 };
 
 #alias {fullsk.stop} {
@@ -34,6 +37,9 @@
 };
 
 #action {^你的「%1」进步了！$} { fullsk.next };
-#action {^你已经达到你的技能等级极限！$} { fullsk.next };
+#action {^你已经达到你的技能等级极限！$} { 
+    #list {skills} delete ${ski};
+    fullsk.next;
+};
 
 #class fullsk close;
