@@ -19,6 +19,7 @@
     {lsnow}{看雪}
     {canwu}{参悟}
     {biwu}{比武场}
+    {banzhuan}{搬砖}
 };
 
 #alias {loadbot} {

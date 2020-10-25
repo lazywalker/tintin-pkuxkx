@@ -1,0 +1,43 @@
+#class bot open;
+#var {gotit} {0};
+
+#alias {startbot} {
+    #show {<efa>开始搬砖...} ;
+};
+
+#alias {stopbot} {
+    #show {<efa>结束搬砖...};
+    #class bot kill;
+};
+
+#alias {_lian} {
+    #send {say 老爷子，我又回来搬砖了...};
+    #if {"${gotit}" == "1"} {
+        ask bai about 白振;
+        ask bai about hand;
+    }; #else {
+        ask lao bai about help;
+        ban brick;
+    };
+};
+
+#action {^开始搬砖...$} { _lian };
+#action {^你抱起了一块青砖。$} { 
+    #delay {3} {
+        s; #delay {8} {
+            w; #delay {8} {
+                n; #delay {8} {
+                    n; #delay {8} {
+                        n; #delay {8} {dui};
+                    };
+                };
+            };
+        };
+    };
+};
+
+#action {^在劳动中，你获得了%*} {ch;#delay 3 {s;s;s;e;n; #delay 1 {_lian}}};
+#action {^你突然想到一个人，白老爷子莫不是%*} {#var {gotit} {1}; #bell};
+#action {^你学会了大擒拿手！$} {stopbot};
+
+#class bot close;
