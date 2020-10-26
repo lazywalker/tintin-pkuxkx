@@ -30,16 +30,11 @@
             #class plugin.%2.tin kill;
             #show {<efa>卸载完毕};
         };
-        #case {""} {
-            _plugin_help;
-        };
         #default {
-            _plugin_help;
+            #echo {%c使用方法：} {light yellow};
+            #echo {%cplugin load \t 装载插件} {light yellow};
+            #echo {%cplugin unload \t 卸载插件 } {light yellow};
         };
-    };
-
-    #alias {_plugin_help} {
-        #echo {help};
     };
 };
 
