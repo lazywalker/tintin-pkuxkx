@@ -5,49 +5,36 @@
 #read {action.tin};
 #read {bot.tin};
 #read {plugin.tin};
-#read {pkuxkx.tin};
+#tab {reloadtt};
+#tab {clear};
 #split
 
-
-#nop 断线事件;
-#event {SESSION ACTIVATED} {
-    #if {"%0" == "gts"} {
-        #show {<efa>等待10s重连…};
-        #delay 10 {
-            #read {init.tin};
-            pkuxkx;
-        };
-    }
-};
-
-#class pkuxkx open;
-#alias pkuxkx {
-    #class pkuxkx kill;
+#alias {login} {
     #session {pkuxkx} {mud.pkuxkx.net} {8080};
-    #pkuxkx ${login};
-};
-#class pkuxkx close;
-
-#tab {reloadtt};
-#alias reloadtt {
-    #kill {all};
-    #show {<efa>TT SCRIPTS RELOADED};
-    #read {init.tin};
-    #read {pkuxkx.tin};
+    #pkuxkx ${char[账号]};
 };
 
 #var READ_VERBOSE 1;
-#alias dread {
+#alias {dread} {
     #if { "$READ_VERBOSE" == "0" } {#read %1};
     #else {#line verbose #read %1};
 };
 
-#tab {clear};
 #alias {clear} {
     #system {tput clear};
 };
 
-#echo {%c%h} {light yellow};
-#echo {%c%h} {light green} {【请输入pkuxkx指令连接至北大侠客行】};
-#echo {%c%h} {light green} {【逍遥行指令gt】};
-#echo {%c%h} {light yellow};
+#event {SESSION ACTIVATED} {
+    #if {"%0" == "gts"} {
+        #show {<efa>等待10s重连…};
+        #delay 10 {
+            reloadtt;
+            login;
+        };
+    }
+};
+
+#NOP #echo {%c%h} {light yellow};
+#NOP #echo {%c%h} {light green} {【请输入pkuxkx指令连接至北大侠客行】};
+#NOP #echo {%c%h} {light green} {【逍遥行指令gt】};
+#NOP #echo {%c%h} {light yellow};
