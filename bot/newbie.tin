@@ -29,7 +29,7 @@
     n;n;n
 };
 
-#action {你怔怔地站在那里不知所措,不如去敲敲门%*knock gate%*，找里面的人问问} {
+#action {^你怔怔地站在那里不知所措,不如去敲敲门(knock gate)，找里面的人问问$} {
     knock gate;
     ask yahuan about 葫芦;
 };
