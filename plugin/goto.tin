@@ -359,7 +359,7 @@
                     #action {$waitfor} {
                         #class xiaoyao-walk-tmp kill;
                         #delay 1 walk;
-                    }
+                    };
                     #class xiaoyao-walk-tmp close;
                   };
                   $cmd
