@@ -3,7 +3,7 @@
 #echo {%cfullsk.start \t 开始 } {light yellow};
 #echo {%cfullsk.stop \t 结束 } {light yellow};
 
-#list {skills} create {strike} {dodge} {force} {parry} {hand} {staff};
+#list {skills} create {strike} {dodge} {force} {parry} {hand} {staff} {blade};
 #var {ski} {0};
 #var {fullsk.delay} {0.5};
 
@@ -20,7 +20,7 @@
 }
 
 #alias {fullsk.start} {
-    loadbot lingwu;
+    loadbot lian;
     fullsk.next;
 };
 
@@ -36,9 +36,10 @@
     #class fullsk kill;
 };
 
-#action {^你的「%1」进步了！$} { fullsk.next };
+#NOP #action {^你的「%1」进步了！$} { fullsk.next };
+
 #action {^你已经达到你的技能等级极限！$} { 
-    #NOP #list {skills} delete ${ski};
+    #list {skills} delete ${ski};
     fullsk.next;
 };
 
