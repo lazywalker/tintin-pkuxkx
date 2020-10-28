@@ -42,6 +42,7 @@
 plugin load beautify;
 beautify;
 plugin load bwcx;
+emon;
 gton;
 
 #class plugin close;
