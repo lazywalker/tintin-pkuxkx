@@ -1,5 +1,5 @@
 #alias {_log} {
-	#format logfile {log/%t.log} {%Y%m%d};
+	#format logfile {log/${char[账号]}_%t.log} {%Y%m%d};
 	#log append $logfile;
 };
 
