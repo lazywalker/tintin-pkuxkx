@@ -13,12 +13,14 @@
     {lingwu}{领悟}
     {xue}{学技能} 
     {du}{读书}
-    {fullsk}{自动练满技能}
+    {gaiban/fullsk}{丐帮:自动练满技能}
     {lsnow}{看雪}
     {canwu}{参悟}
-    {biwu}{比武场}
+    {gaiban/biwu}{丐帮:比武场}
     {banzhuan}{搬砖}
     {cai}{踩桩}
+    {wudu/newbie}{五毒教:自动新手任务}
+    {newbie}{新手村}
 };
 
 #alias {loadbot} {
