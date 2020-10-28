@@ -10,7 +10,7 @@
             #if {$book_colors[+$j] < $book_colors[+$i]} {
                 #NOP #showme {$book_colors[+$j] - @_trim{$book_names[+$j]}};
                 #NOP #showme {<efa>zhengli @_trim{$book_names[+$j]} to $i};
-                #delay {2} {zhengli @_trim{$book_names[+$j]} to $i};
+                #delay {1} {zhengli @_trim{$book_names[+$j]} to $i};
                 #class newbie_baishu kill;
                 #class newbie_baishu read bot/wudu/newbie_baishu.tin;
                 #math found 1;
