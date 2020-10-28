@@ -1,2 +1,3 @@
-#var {login} {2;uid;passwd};
+#var {char[账号]} {userid};
+#var {char[密码]} {passwd};
 #var {char[档案][门派]} {丐帮};

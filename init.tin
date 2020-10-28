@@ -11,7 +11,7 @@
 
 #alias {login} {
     #session {pkuxkx} {mud.pkuxkx.net} {8080};
-    #pkuxkx ${char[账号]};
+    #pkuxkx {2;${char[账号]};${char[密码]}};
 };
 
 #var READ_VERBOSE 1;
