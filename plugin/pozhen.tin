@@ -1,4 +1,7 @@
-#var pozhen.pfm {cuff.zhen};
+#var pozhen.pfm {xianglong-zhang.xiao};
+#if {"$char[破阵][必杀]" != "" } {
+    #local pozhen.pfm {$char[破阵][必杀]};
+};
 
 #alias ask.job {
     #class ask.job open;
