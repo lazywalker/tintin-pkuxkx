@@ -20,14 +20,12 @@
     #switch {"%1"} {
         #case {"load"} {
             #show {<efa>载入%2插件…};
-            #class plugin.%2.tin open;
-            #read {plugin/%2.tin};
-            #class plugin.%2.tin close;
+            #class plugin.%2 read {plugin/%2.tin};
             #show {<efa>载入完毕};
         };
         #case {"unload"} {
             #show {<efa>卸载%2插件…};
-            #class plugin.%2.tin kill;
+            #class plugin.%2 kill;
             #show {<efa>卸载完毕};
         };
         #default {

@@ -3,7 +3,7 @@
 #alias {startbot} {
     #show {<efa>开始新手任务...};
     set brief 3;
-    ask.job;
+    ask.job
 };
 
 #alias {stopbot} {
@@ -21,12 +21,12 @@
     #action {^你把水桶拉了上来，打了满满一桶水。$} { w;jiao };
     #action {^你把水浇向菜地，还有些地需要更多水浇灌。$} { #delay {3} {jiao} };
     #action {^你正忙着呢。$} { #delay {1} {jiao} };
-    #action {^水桶里的水已经浇完了。$} { e;ti; };
+    #action {^水桶里的水已经浇完了。$} { e;ti };
     #action {^你把水浇向菜地，你完成了杂役任务『浇菜地』。$} {
         #delay {3} {
             e;s;
             #class job kill;
-            ask.job;
+            ask.job
         };
     };
     #class job close;
@@ -44,7 +44,7 @@
         #delay {3} {
             w;s;
             #class job kill;
-            ask.job;
+            ask.job
         };
     };
     #class job close;
@@ -62,7 +62,7 @@
         #delay {3} {
             drop jing tong;e;
             #class job kill;
-            ask.job;
+            ask.job
         };
     };
 
@@ -82,7 +82,7 @@
         #delay {3} {
             w;
             #class job kill;
-            ask.job;
+            ask.job
         };
     };
 

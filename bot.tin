@@ -21,6 +21,7 @@
     {cai}{踩桩}
     {wudu/newbie}{五毒教:自动新手任务}
     {newbie}{新手村}
+    {hongdou}{红豆答题}
 };
 
 #alias {loadbot} {
