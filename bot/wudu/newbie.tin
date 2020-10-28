@@ -1,0 +1,187 @@
+#alias {ask.job} {
+   ask gu about job; 
+};
+
+#alias {job.jiaocai} {
+    #class job open;
+    zhao tong;
+    #action {^你找到了一只水桶。$} {
+        n;ti;
+    };
+    #action {^你身上已经有一只水桶了。$} {
+        n;ti;
+    };
+    #action {^你把水桶拉了上来，打了满满一桶水。$} {
+        w;jiao;
+    };
+    #action {^你把水浇向菜地，还有些地需要更多水浇灌。$} {
+        #delay {3} {jiao};
+    };
+    #action {^你正忙着呢。$} {
+        #delay {1} {jiao};
+    };
+    #action {^水桶里的水已经浇完了。$} {
+        e;ti;
+    };
+    #action {^你把水浇向菜地，你完成了杂役任务『浇菜地』。$} {
+        #delay {3} {
+            e;s;
+            #class job kill;
+            ask.job;
+        };
+    };
+    #class job close;
+};
+
+#alias {job.jiaotian} {
+    #class job open;
+    zhao tong;
+    #action {^你找到了一只水桶。$} {
+        n;ti;
+    };
+    #action {^你身上已经有一只水桶了。$} {
+        n;ti;
+    };
+    #action {^你把水桶拉了上来，打了满满一桶水。$} {
+        e;jiao;
+    };
+    #action {^你把水浇向田垄，还有些地需要更多水浇灌。$} {
+        #delay {3} {jiao};
+    };
+    #action {^你正忙着呢。$} {
+        #delay {1} {jiao};
+    };
+    #action {^水桶里的水已经浇完了。$} {
+        w;ti;
+    };
+    #action {^你把水浇向田垄，你完成了杂役任务『浇田』。$} {
+        #delay {3} {
+            w;s;
+            #class job kill;
+            ask.job;
+        };
+    };
+    #class job close;
+};
+
+#alias {job.daoshi} {
+    #class job open;
+    w;zhao 净桶;
+
+    #action {^你从茅房的角落取出一个净桶。$} {
+        e;se;yao;
+    };
+    #action {^你打开便桶，将其中的黄白之物舀进净桶。便桶还没有清空。$} {
+        #delay {3} {yao};
+    };
+    #action {^你正忙着呢。$} {
+        #delay {1} {yao};
+    };
+    #action {^你打开便桶，将其中的黄白之物舀进净桶。便桶已经被你清空了。$} {
+        #delay {3} {nw;w;dao};
+    };
+    #action {^你完成了杂役任务『清便桶』。$} {
+        #delay {3} {
+            drop jing tong;e;
+            #class job kill;
+            ask.job;
+        };
+    };
+
+    #class job close;
+};
+
+#alias {job.weizhu} {
+    #class job open;
+    zhao 大筐;
+
+    #action {^你找到了一只大筐。$} {
+        n;w;zhao;
+    };
+    #action {^你身上已经有一只筐了。$} {
+        n;w;zhao;
+    };
+    #action {^你摘下了几把烂掉的菜叶，扔进大筐里。$} {
+        #delay {5} {e;
+            #delay {1} {e;
+                #delay {1} {s;
+                    #delay {1} {wei}
+                }
+            }
+        };
+    };
+    #action {^这些猪好像还没吃饱。$} {
+        #delay {1} {wei};
+    };
+    #action {^你正忙着呢。$} {
+        #delay {1} {wei};
+    };
+    #action {^你的筐里已经空了。$} {
+        #delay {1} {n;w;w;zhao};
+    };
+    #action {^你完成了杂役任务『喂猪』。$} {
+        #delay {3} {
+            w;
+            #class job kill;
+            ask.job;
+        };
+    };
+
+    #class job close;
+};
+
+#alias {job.baishu} {
+    #class job open;
+
+    #class newbie_baishu read bot/wudu/newbie_baishu.tin;
+    sw;look shelf;
+
+    #action {^书架上的书有点乱了，你要把它们按颜色整理} {
+        #bell;
+    };
+
+    #action {^你完成了杂役任务『整理书籍』。$} {
+        ne;
+        #class job kill;
+        ask.job;
+    };
+
+    #class job close;
+};
+
+#action {^谷时坚说道：「你去提水浇菜地。」$} {
+    #action {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$} {
+        #unaction {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$};
+        job.jiaocai;
+    };
+};
+
+#action {^谷时坚说道：「你去把睡房的便桶全部倒进茅房。」$} {
+    #action {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$} {
+        #unaction {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$};
+        job.daoshi;
+    };
+};
+
+#action {^谷时坚说道：「你去把书房书架上的书整理一下。」$} {
+    #action {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$} {
+        #unaction {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$};
+        job.baishu;
+    };
+};
+
+#action {^谷时坚说道：「你去提水浇田。」$} {
+    #action {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$} {
+        #unaction {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$};
+        job.jiaotian;
+    };
+};
+
+#action {^谷时坚说道：「你去弄点烂菜叶喂猪。」$} {
+    #action {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$} {
+        #unaction {^谷时坚拍了拍探子的头，说道：「好孩子，乖。」$};
+        job.weizhu;
+    };
+};
+
+#action {^你的动作还没有完成，不能移动。$} {#bell};
