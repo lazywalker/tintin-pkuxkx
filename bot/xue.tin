@@ -1,8 +1,9 @@
 #class lianxi open;
 #var {xue.delay} {3};
+#var {xue.count} {50};
 
 #alias {_lian} {
-    xue ${xue.master} for ${xue.skill} 10;
+    xue ${xue.master} for ${xue.skill} ${xue.count};
 };
 
 #alias {startbot} {
@@ -26,7 +27,7 @@
 };
 
 #action {^开始跟师傅学习...$} { #delay ${xue.delay} { _lian } };
-#action {^你共请教了十次$} { #delay ${xue.delay} { _lian } };
+#action {^你共请教了五十次$} { #delay ${xue.delay} { _lian } };
 #action {^你今天太累了，结果什么也没有学到。$} { yun regenerate };
 #action {^你略一凝神，精神看起来好多了。$} { #delay ${xue.delay} {_lian} };
 

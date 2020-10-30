@@ -7,21 +7,24 @@
 };
 
 #variable {allbots} {
-    {dazuo}{打坐} 
+    {dazuo}{打坐}
+    {dz}{通脉}
     {tuna}{吐纳}
     {lian}{练习}
     {lingwu}{领悟}
     {xue}{学技能} 
     {du}{读书}
-    {gaiban/fullsk}{丐帮:自动练满技能}
-    {lsnow}{看雪}
-    {canwu}{参悟}
-    {gaiban/biwu}{丐帮:比武场}
-    {banzhuan}{搬砖}
-    {cai}{踩桩}
-    {wudu/newbie}{五毒教:自动新手任务}
     {newbie}{新手村}
     {hongdou}{红豆答题}
+    {lsnow}{看雪}
+    {canwu}{参悟}
+    {banzhuan}{搬砖}
+    {cai}{踩桩}
+    {tang}{大唐任务}
+    {gaiban/biwu}{丐帮:比武场}
+    {gaiban/fullsk}{丐帮:自动练满技能}
+    {wudu/du}{五毒教:读书}
+    {wudu/newbie}{五毒教:自动新手任务}
 };
 
 #alias {loadbot} {

@@ -1,0 +1,22 @@
+#class bot open;
+
+#alias {startbot} {
+    #show {<efa>开始通脉...} ;
+};
+
+#alias {stopbot} {
+    #show {<efa>结束通脉...};
+    #class bot kill;
+};
+
+#action {^开始通脉...$} { dz };
+#action {^你的内力增加了！！$} { halt;_sleep };
+#action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {dz} };
+#action {^你现在内力接近圆满状态。$} { dazuo 10  };
+#action {^你现在气血严重不足，无法满足打坐最小要求。$} { #delay 5 {dz} };
+#action {^你现在的气太少了，无法产生内息运行全身经脉。$} { _sleep };
+#action {^你现在精不够，无法控制内息的流动！$} { _sleep };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { dz  };
+#action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
+
+#class bot close;

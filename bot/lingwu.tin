@@ -2,9 +2,10 @@
 #show {<efa>必须在门派指定领悟室方可使用。};
 #list {basic.skills} {create} {blade} {dodge} {force} {strike} {parry} {staff} {hand}
 #var {lingwu.delay} {2};
+#var {lingwu.count} {50};
 
 #alias {_lian} {
-    lingwu ${lingwu.skill} 10;
+    lingwu ${lingwu.skill} ${lingwu.count};
 };
 
 #alias {startbot} {
