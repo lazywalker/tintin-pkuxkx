@@ -21,10 +21,10 @@
     {banzhuan}{搬砖}
     {cai}{踩桩}
     {tang}{大唐任务}
-    {gaiban/biwu}{丐帮:比武场}
-    {gaiban/fullsk}{丐帮:自动练满技能}
-    {wudu/du}{五毒教:读书}
-    {wudu/newbie}{五毒教:自动新手任务}
+    {gb/biwu}{丐帮:比武场}
+    {gb/fullsk}{丐帮:自动练满技能}
+    {wdj/du}{五毒教:读书}
+    {wdj/newbie}{五毒教:自动新手任务}
 };
 
 #alias {loadbot} {
