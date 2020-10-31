@@ -50,10 +50,7 @@
 #action {^你%1练习%2，获得了%3进步！$} { #delay ${lian.delay} {_lian} };
 
 #action {^你减缓真气运行，让气血运行恢复正常。$} {
-    #if {"${lian.skill}" == "dodge" | "${lian.skill}" == "staff" | "${lian.skill}" == "blade"} {
-        yun recover;
-    }; 
-    
+    yun recover;
     yun qi; 
 };
 
