@@ -1,4 +1,3 @@
-#NOP by zixijian https://github.com/zixijian/tt/blob/master/goto.tt
 #nop {==修改信息==;
 201006 修复天柱峰到武当路径，小心土匪;
 200404 增加wait、waitfor、waitline功能;
@@ -33,25 +32,25 @@
 };
 
 #nop 走路速度控制,分别为每秒上限步数、超限等待时间、正常行走间隔时间;
-#var xiaoyao.accu 10;
-#var xiaoyao.delay_long 1;
-#var xiaoyao.delay_short 0.2;
+#var xiaoyao.accu 15;
+#var xiaoyao.delay_long 0.5;
+#var xiaoyao.delay_short 0.05;
 
 #alias gt {
     #if {"%1"==""} {
      #echo {%c%h} {light green} {【欢迎使用北侠逍遥行v1.5h1(for tt++)】 };
-		#echo ;
-		#echo {%c%h} {light green} {【sethere [地名缩写]指定当前位置】};
-		#echo ;
-		#echo {%c%+2s命令格式：gt [Destination|here|list]} {light yellow};
-		#echo {%c%+2s说明：gt Destination：前往指定区域，可使用地区全名或缩写} {light yellow};
-		#echo {%c%+8sgt here：显示当前区域名称及地标房间} {light yellow};
-		#echo {%c%+8sgt list：显示所有可通行区域的名称} {light yellow};
-		#echo {%c%+8sgt：显示本说明} {light yellow};
-		#echo {%c%+8s查询各地区地标房间请使用inquire命令} {light yellow};
-		#echo ;
-		#echo {%c%h} {light green} {【最后修改20201006】};
-	};
+        #echo ;
+        #echo {%c%h} {light green} {【sethere [地名缩写]指定当前位置】};
+        #echo ;
+        #echo {%c%+2s命令格式：gt [Destination|here|list]} {light yellow};
+        #echo {%c%+2s说明：gt Destination：前往指定区域，可使用地区全名或缩写} {light yellow};
+        #echo {%c%+8sgt here：显示当前区域名称及地标房间} {light yellow};
+        #echo {%c%+8sgt list：显示所有可通行区域的名称} {light yellow};
+        #echo {%c%+8sgt：显示本说明} {light yellow};
+        #echo {%c%+8s查询各地区地标房间请使用inquire命令} {light yellow};
+        #echo ;
+        #echo {%c%h} {light green} {【最后修改20201006】};
+    };
     #else {
         #if {"%1"=="here"} {
             #list AreaAbbr_list find $CurrentPosition i;
@@ -284,14 +283,14 @@
         #list Route_list add $Route_list_short[%*];
     };
     #nop //----------开始路径简化----------;
-    #showme $Route[%*];
+    #showme {$Route[%*]};
     #nop    #showme $Route_list[%*];
     #var i 1;
     #var j @numitems{Route_list};
     #while {$i<$j} {
         #var k @ismember{@item{Route_list;$i};Directions};
         #if {$k>0 & $k==@ismember{@item{Route_list;@eval{$i+1}};Directionsb}} {
-            #list Route_list delete $i 2;
+        #list Route_list delete $i 2;
             #math j {$j-2};
             #if {$i>1} {#math i {$i-1}};
         };
@@ -299,7 +298,7 @@
             #math i {$i+1};
         };
     };
-    #showme $Route_list[%*];
+    #showme {$Route_list[%*]};
     #echo {%c%h} {light yellow};
     #echo ;
     #showme <efa>  带你装B带你飞 ...;
@@ -329,17 +328,17 @@
     #alias walk {
         #if {$step==$stepmax} {set brief 0};
         #if {$step<=$stepmax} {
-	   #switch {"$cmd"}{
-	      #case {"wait%s%d"} {
+       #switch {"$cmd"}{
+          #case {"wait%s%d"} {
                   #local time {$cmd};
-		  #replace time {wait} {};
-		  #replace time { } {};
-		  #delay {$time} {walk};
-		  #echo {%c%+2s等待「$time」s后行动。}{light yellow};
-		  #var cmd {};
+          #replace time {wait} {};
+          #replace time { } {};
+          #delay {$time} {walk};
+          #echo {%c%+2s等待「$time」s后行动。}{light yellow};
+          #var cmd {};
               };
               #case {"wait{for|line} %*"}{
-	          #var waitfor {$cmd};
+              #var waitfor {$cmd};
                   #var matchline {false};
                   #if { "$cmd" == "waitline %*" } {
                     #format matchline {true};
@@ -365,18 +364,18 @@
                   $cmd
               };
               #default {
-	         #var cmd @item{Route_list;$step};
-	         #if {"$cmd"=="stop"}{
-		    #math step {$step+1};
-		    #var stepaccu 1;
-		 };
+             #var cmd @item{Route_list;$step};
+             #if {"$cmd"=="stop"}{
+            #math step {$step+1};
+            #var stepaccu 1;
+         };
                  #elseif {"$cmd"=="busy1"}{
-		    #math step {$step+1};
-		    #var stepaccu 1;
-		    #delay {2} {walk};
-		 };
-		 #else {
-		   $cmd;
+            #math step {$step+1};
+            #var stepaccu 1;
+            #delay {2} {walk};
+         };
+         #else {
+           $cmd;
                    #math stepaccu {$stepaccu+1};
                    #math step {$step+1};
                    #if {$stepaccu>=${xiaoyao.accu}} {
@@ -386,8 +385,8 @@
                    #else {
                       #delay {${xiaoyao.delay_short}} {walk};
                    };
-		 };
-	      };
+         };
+          };
            };
         };
         #else {
@@ -453,9 +452,19 @@
         #action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {#class tmp kill;#delay {3} {yell boat}};
         #class tmp close;
     };
-    #action {^%*随即把一块踏脚板搭上堤岸。$} {
-        #var stepaccu 1;
-        out;walk;
+    #var in_boat 0;
+    #action {江心驶去。} {
+        #var in_boat 1;
+    };
+    #action {^艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {
+        #if {${in_boat} == 1} {
+            #var in_boat 0;
+            #var stepaccu 1;
+            out;walk;
+        };
+    };
+    #action {^你刚要前行，忽然发现江水决堤，不由暗自庆幸，还好没过去。$} {
+       #0;
     };
     #action {^你反应迅速，急忙双手抱头，身体蜷曲。眼前昏天黑地，顺着山路直滚了下去。} {#class walk kill;#var CurrentPosition qbl};
     #action {^你从山上滚了下来，只觉得浑身无处不疼，还受了几处伤。} {#class walk kill;#var CurrentPosition dzf};
@@ -1235,7 +1244,7 @@
 
 #nop ==自定函数==;
 #function {numitems} {#list %1 size result};
-#function {ismember} {#list %2 find %1 result};
+#function {ismember} {#list %2 find {%1} result};
 #function {item} {#list %1 get %2 result};
 #nop 列表包装;
 #function {wrap} {#format result {%w} {%1}};
@@ -1301,13 +1310,13 @@
 #var mydodgelv 0;
 #act {^≡━━━━◎人物详情◎━━━━━━━━━━━━━━━━━━━━━━━━━━≡$}
 {
-	#class tmp open;
-	#act {^ 【%*】%*(%*)$} {#var myid @lower{%%3}};
-	#act {你是%*第%*代弟子} {#var mymenpai %%1};
-	#act {你是朝廷%*品官员} {#var mymenpai 朝廷};
-	#act {你是一位%*岁的%*婚%*性人类} {#var myage @ctd{%%1};#var mygender %%3};
-	#act {^≡━━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━━━≡$} {#class tmp kill};
-	#class tmp close;
+    #class tmp open;
+    #act {^ 【%*】%*(%*)$} {#var myid @lower{%%3}};
+    #act {你是%*第%*代弟子} {#var mymenpai %%1};
+    #act {你是朝廷%*品官员} {#var mymenpai 朝廷};
+    #act {你是一位%*岁的%*婚%*性人类} {#var myage @ctd{%%1};#var mygender %%3};
+    #act {^≡━━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━━━≡$} {#class tmp kill};
+    #class tmp close;
 };
 
 #act {^│%s%s基本轻功%s│dodge%*│%*│%1│%2│$} {#var mydodgelv @int{%1}};
