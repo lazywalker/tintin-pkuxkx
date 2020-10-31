@@ -1,4 +1,6 @@
 #nop {==修改信息==;
+201031 增加苗岭北到五毒教路径;
+        核心代码重排版 @lazywalker;
 201006 修复天柱峰到武当路径，小心土匪;
 200404 增加wait、waitfor、waitline功能;
        增加节点观海石ghs;
@@ -307,20 +309,20 @@
 };
 #nop ==行走命令==;
 #ali {wait}{
-  #switch {"%1"}{
-     #case {""}{
-       #var cmd {wait 2};
-     };
-     #default {
-       #var cmd {wait %1}
-     };
-  };
+    #switch {"%1"}{
+        #case {""}{
+            #var cmd {wait 2};
+        };
+        #default {
+            #var cmd {wait %1};
+        };
+    };
 };
 #alias {waitfor}{
-  #var cmd {waitfor %1}
+    #var cmd {waitfor %1};
 };
 #alias {waitline}{
-  #var cmd {waitline %1}
+    #var cmd {waitline %1};
 };
 
 #action {^  带你装B带你飞 ...$} {
@@ -328,66 +330,66 @@
     #alias walk {
         #if {$step==$stepmax} {set brief 0};
         #if {$step<=$stepmax} {
-       #switch {"$cmd"}{
-          #case {"wait%s%d"} {
-                  #local time {$cmd};
-          #replace time {wait} {};
-          #replace time { } {};
-          #delay {$time} {walk};
-          #echo {%c%+2s等待「$time」s后行动。}{light yellow};
-          #var cmd {};
-              };
-              #case {"wait{for|line} %*"}{
-              #var waitfor {$cmd};
-                  #var matchline {false};
-                  #if { "$cmd" == "waitline %*" } {
-                    #format matchline {true};
-                  };
-                  #replace waitfor {waitfor }  {};
-                  #replace waitfor {waitline } {};
-                  #if { "$matchline" == "true" } {
-                    #format waitfor {^%p$} {$waitfor};
-                  };
-                  #else {
-                    #format waitfor {%p}   {$waitfor};
-                  };
-                  #var cmd {
-                    #class xiaoyao-walk-tmp kill;
-                    #class xiaoyao-walk-tmp open;
-                    #echo {%c%+2s等待事件「$waitfor」出现。}{light yellow};
-                    #action {$waitfor} {
-                        #class xiaoyao-walk-tmp kill;
-                        #delay 1 walk;
+            #switch {"$cmd"}{
+                #case {"wait%s%d"} {
+                    #local time {$cmd};
+                    #replace time {wait} {};
+                    #replace time { } {};
+                    #delay {$time} {walk};
+                    #echo {%c%+2s等待「$time」s后行动。}{light yellow};
+                    #var cmd {};
+                }; #case {"wait{for|line} %*"}{
+                    #var matchline {false};
+                    #if { "$cmd" == "waitline %*" } {
+                        #format matchline {true};
                     };
-                    #class xiaoyao-walk-tmp close;
-                  };
-                  $cmd
-              };
-              #default {
-             #var cmd @item{Route_list;$step};
-             #if {"$cmd"=="stop"}{
-            #math step {$step+1};
-            #var stepaccu 1;
-         };
-                 #elseif {"$cmd"=="busy1"}{
-            #math step {$step+1};
-            #var stepaccu 1;
-            #delay {2} {walk};
-         };
-         #else {
-           $cmd;
-                   #math stepaccu {$stepaccu+1};
-                   #math step {$step+1};
-                   #if {$stepaccu>=${xiaoyao.accu}} {
-                      #delay {${xiaoyao.delay_long}} {walk};
-                      #var stepaccu 1;
-                   };
-                   #else {
-                      #delay {${xiaoyao.delay_short}} {walk};
-                   };
-         };
-          };
-           };
+                    #replace waitfor {waitfor }  {};
+                    #replace waitfor {waitline } {};
+                    #if { "$matchline" == "true" } {
+                        #format waitfor {^%p$} {$waitfor};
+                    };
+                    #else {
+                        #format waitfor {%p}   {$waitfor};
+                    };
+                    #var cmd {
+                        #class xiaoyao-walk-tmp kill;
+                        #class xiaoyao-walk-tmp open;
+                        #echo {%c%+2s等待事件「$waitfor」出现。}{light yellow};
+                        #action {$waitfor} {
+                            #class xiaoyao-walk-tmp kill;
+                            #delay 1 walk;
+                        };
+                        #class xiaoyao-walk-tmp close;
+                    };
+                    $cmd;
+                };
+                #default {
+                    #var cmd @item{Route_list;$step};
+                    #if {"$cmd"=="stop"}{
+                        #math step {$step+1};
+                        #var stepaccu 1;
+                    }; #elseif {"$cmd"=="busy1"}{
+                        #math step {$step+1};
+                        #var stepaccu 1;
+                        #delay {2} {walk};
+                    }; #elseif {"$cmd"=="busy5"}{
+                        #math step {$step+1};
+                        #var stepaccu 1;
+                        #delay {5} {walk};
+                    }; #else {
+                        $cmd;
+                        #math stepaccu {$stepaccu+1};
+                        #math step {$step+1};
+                        #if {$stepaccu>=${xiaoyao.accu}} {
+                            #delay {${xiaoyao.delay_long}} {walk};
+                            #var stepaccu 1;
+                        };
+                        #else {
+                            #delay {${xiaoyao.delay_short}} {walk};
+                        };
+                    };
+                };
+            };
         };
         #else {
             #nop whisper;
