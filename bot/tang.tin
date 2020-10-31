@@ -26,7 +26,8 @@
 
     #var tang-job-list {};
 
-    #action {^   %S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {
+    #high {^  %S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {bold green};
+    #action {^  %S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {
         #list tang-job-list[%%2] add {{
             {ID}{%%1}
             {地点}{%%6}
@@ -467,7 +468,7 @@
     #local place {${tang-all-location[${tang-task-location}]}};
     #local path {@reverseCmds{{$place[path]}}};
     #echo {%s} {PATH: $path};
-
+    tang.案件进展;
 
     #var backpath $path;
     #alias {goback} {
