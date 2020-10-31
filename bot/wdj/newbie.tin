@@ -92,7 +92,7 @@
 #alias {job.baishu} {
     #class job open;
 
-    #class newbie_baishu read bot/wudu/newbie_baishu.tin;
+    #class newbie_baishu read bot/wdj/newbie_baishu.tin;
     sw;look shelf;
 
     #action {^书架上的书有点乱了，你要把它们按颜色整理} { #bell };

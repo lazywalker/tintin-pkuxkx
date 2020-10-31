@@ -12,7 +12,7 @@
                 #NOP #showme {<efa>zhengli @_trim{$book_names[+$j]} to $i};
                 #delay {1} {zhengli @_trim{$book_names[+$j]} to $i};
                 #class newbie_baishu kill;
-                #class newbie_baishu read bot/wudu/newbie_baishu.tin;
+                #class newbie_baishu read bot/wdj/newbie_baishu.tin;
                 #math found 1;
                 #break;
             };
