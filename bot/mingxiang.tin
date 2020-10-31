@@ -1,0 +1,16 @@
+#class bot open;
+
+#alias {startbot} {
+    #show {<efa>开始冥想...} ;
+};
+
+#alias {stopbot} {
+    #show {<efa>结束冥想...};
+    #class bot kill;
+};
+
+#action {^开始冥想...$} { dz };
+#action {^你冥想了佛家的真理,觉得颇有所获!$} { #delay 5 {mingxiang} };
+#action {^你现在无法冥想佛家的真理!$} { #delay 2 {mingxiang} };
+
+#class bot close;
