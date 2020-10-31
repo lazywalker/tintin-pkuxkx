@@ -80,7 +80,7 @@
                     #list AreaNameCh_list get $n j;
                     #list AreaName_list get $n k;
                     #list AreaAbbr_list get $n l;
-                   #echo {$n . $j ($k,$l)};
+                    #echo {$n . $j ($k,$l)};
                 };
                 #echo {%c%h} {light yellow};
             };
@@ -154,7 +154,7 @@
                 #list AreaNameCh_list get $AreaId i;
                 #list AreaName_list get $AreaId j;
                 #list AreaAbbr_list get $AreaId k;
-         #showme 你要查询的地区是:$i($AreaId,$j,$k);
+                #showme 你要查询的地区是:$i($AreaId,$j,$k);
                 #list AreaPosition_list get $AreaId i;
                 #showme 该地区地标房间名为：$i;
                 #showme 与该地区直接相连的地区有：;
@@ -514,6 +514,29 @@
         };
     };
     #nop #action {看起来土匪想杀死你！} {waitfor {土匪死了。};kill tufei};
+
+    #class mlwalk open;
+    #alias {mlx_to_mld} {
+        e;#delay mlstep {
+            eu; #delay mlstep {
+                ed; #delay mlstep {
+                    mlx_to_mld
+                } 5;
+            } 5;
+        } 5;
+    };
+    #alias {mld_to_mlx} {
+        w;#delay mlstep {
+            wu; #delay mlstep {
+                wd; #delay mlstep {
+                    mld_to_mlx
+                } 5;
+            } 5;
+        } 5;
+    };
+    #action {^在你筋疲力竭之际，终于找到了出路(out)。$} {#undelay mlstep;#class mlwalk kill;walk};
+
+    #class mlwalk close;
     #class walk close;
 
     #var step 1;
@@ -1021,8 +1044,8 @@
 #list Route_lh_xkt create {nd};
 #list Route_th_ghs create {n;n;nu;nu;nu;n;n;n;n;w;wu;eu};
 #list Route_ghs_th create {wd;ed;e;s;s;s;s;sd;sd;sd;s;s};
-#list Route_mlx_mld create {eu} {e} {busy5} {eu} {busy5} {ed} {busy5} {e} {busy5} {eu} {busy5} {ed} {busy5} {e} {busy5} {eu} {busy5} {ed} {out}
-#list Route_mld_mlx create {enter} {w} {busy5} {wu} {busy5} {wd} {busy5} {w} {busy5} {wu} {busy5} {wd} {busy5} {w} {busy5} {wu} {busy5} {wd} {out}
+#list Route_mlx_mld create {eu} {mlx_to_mld} {stop} {out}
+#list Route_mld_mlx create {enter} {mld_to_mlx} {stop} {out}
 #list Route_mld_wdj create {eu} {busy1} {eu} {busy1} {e} {busy1} {e} {busy1} {se} {se} {se} {eu} {e} {e} {eu} {se} {s} {sd} {su} {s} {enter} {s} {e} {s} {w} {s} {out} {s};
 #list Route_wdj_mld create {n} {enter} {n} {e} {n} {w} {n} {out} {n} {nd} {nu} {n} {nw} {wd} {w} {w} {wd} {nw} {nw} {nw} {busy1} {w} {busy1} {w} {busy1} {wd} {busy1} {wd};
 
