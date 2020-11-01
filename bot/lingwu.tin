@@ -9,7 +9,7 @@
 };
 
 #alias {startbot} {
-    #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "force" |"%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
+    #if {"%1" == "sword" | "%1" == "blade" | "%1" == "dodge" | "%1" == "force" |"%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
         #var {lingwu.skill} {%1}; 
 
         #if {"%2" != ""} {
