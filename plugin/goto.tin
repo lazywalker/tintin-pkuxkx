@@ -396,6 +396,7 @@
             #echo {%c%h} {light yellow};
             #showme <efa>  抵达目的地 ...;
             #echo {%c%h} {light yellow};
+            #bell;
         };
     };
 
