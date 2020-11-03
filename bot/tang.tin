@@ -26,8 +26,8 @@
 
     #var tang-job-list {};
 
-    #high {^  %S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {bold green};
-    #action {^  %S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {
+    #high {%S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {bold green};
+    #action {%S%!s缉拿罪犯「%%2」%!s新建%!s%S%!s%S%!s%S%!s无%!s%*$} {
         #list tang-job-list[%%2] add {{
             {ID}{%%1}
             {地点}{%%6}
@@ -42,11 +42,12 @@
             };
         };
 
-        #delay 1 {ask jingzhao shaoyin about 任务信息};
+        #delay 10 {ask jingzhao shaoyin about 任务信息};
     };
 
     #action {^最近长安城内出现不少盗窃事件，有人报告%*附近商铺$} {
         #class tang.job kill;
+        #bell;
         tang.goto {%%1};
     };
 
@@ -471,9 +472,11 @@
     tang.案件进展;
 
     #var backpath $path;
-    #alias {goback} {
+    #bell;
+    #alias {gb} {
         $backpath;
         done;
+        job;
     }
 };
 

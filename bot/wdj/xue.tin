@@ -1,0 +1,39 @@
+#class bot open;
+#var {xue.delay} {3};
+#var {xue.count} {50};
+
+#alias {_lian} {
+    xue ${xue.master} for ${xue.skill} ${xue.count};
+};
+
+#alias {startbot} {
+    #if {"%1" == "" | "%2" == ""} {
+        #echo {%c使用方法：startbot [师傅id(英文)] [技能id(英文)] <每次间隔秒数>} {light yellow};
+    };
+    #else {
+        #var {xue.master} {%1};
+        #var {xue.skill} {%2};
+        #if {"%3" != ""} {
+            #var {xue.delay} {%3};
+        };
+        #show {<fca>master:${xue.master}|skill:${xue.skill}|delay:${xue.delay}};
+        #show {<efa>开始跟师傅学习...} ;
+    };
+};
+
+#alias {stopbot} {
+    #show {<efa>结束学习...};
+    #class bot kill;
+};
+
+#action {^开始跟师傅学习...$} { #delay ${xue.delay} { _lian } };
+#action {^你共请教了零次$} { e;sleep } 1;
+#action {^你共请教了%1次$} { #delay ${xue.delay} { _lian } } 5;
+
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$}  { w;_lian };
+#action {^你和师父切磋了%*消耗了大量潜能} {stopbot};
+#action {^也许是缺乏实战经验，你对%1的回答总是无法领会。} {stopbot};
+
+#action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
+
+#class bot close;
