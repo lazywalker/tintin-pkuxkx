@@ -1,35 +1,56 @@
 #class bot open;
 #var {gst.skill} {ta};
 #var {gst.delay} {2};
+#var {gst.pause} {0};
+#var {gst.skilltext} {};
 
 #alias {_lian} {
-    #if {"${gst.skill}" == "ta"} {
-        #action {^你对照蛊神塔，蛊术有所提升。$} { #delay ${gst.delay} {_lian} };
-        l ta;
-    }; #elseif {"${du.book}" == "tianlong"} {
-        read ${du.book} 10;
+    #if {${gst.pause} == 0} {
+        #if {"${gst.skill}" == "so"} { l ta };
+        #else { lianxi ${gst.skill} };
     }; #else {
-        du ${du.book} for 1;
+        #show {<efa>准备休息...};
     };
 };
 
 #alias {_recover} {
-   n;#5 drink;
-   s;su;#5 have;
-   e;sleep
+    n;#5 drink;
+    s;su;#5 have;
+    #NOP e;sleep;
+    #var {gst.pause} {0}
 };
 
 #alias {startbot} {
     #if {"%1" == ""} {
-        #echo {%c使用方法：startbot [ta|dodge|force] <每次间隔秒数>} {light yellow};
+        #echo {%c使用方法：startbot [so|dodge|whip|strike|blade] <每次间隔秒数>} {light yellow};
     };
     #else {
         #var {gst.skill} {%1};
+        #switch {"${gst.skill}"} {
+            #case {"dodge"} {
+                #var {gst.skilltext} {机关铜人忽然动了起来，攻向你，你忙躲向两侧。};
+            };
+            #case {"whip"} {
+                #var {gst.skilltext} {你以臂为鞭，狠狠抽向机关铜人。};
+            };
+            #case {"strike"} {
+                #var {gst.skilltext} {你变换掌法，拍向机关铜人。};
+            };
+            #case {"blade"} {
+                #var {gst.skilltext} {你单掌高举，作势斩向机关铜人。};
+            };
+            #default {
+                #var {gst.skilltext} {你对照蛊神塔，蛊术有所提升。};
+            };
+        };
+
         #if {"%2" != ""} {
             #var {gst.delay} {%2};
         };
         set brief 3;
         #show {<fca>skill:${gst.skill}|delay:${gst.delay}};
+
+        #action {^${gst.skilltext}$} { #delay ${gst.delay} {_lian} };
         #show {<efa>开始领悟...};
     };
 };
@@ -41,8 +62,10 @@
 };
 
 #action {^开始领悟...$} {_lian};
-#action {^你的「蛊术」进步了！$} { 
-    #unaction {^你对照蛊神塔，蛊术有所提升。$};
+#action {^你正忙着呢。$} {#delay 0.5 {_lian}};
+
+#action {^{突然一阵“ 咕咕” 声传来，原来是你的肚子在叫了|你舔了舔干裂的嘴唇，看来是很久没有喝水了。}$} { 
+    #var {gst.pause} {1};
     #delay 3 { _recover };
 };
 
