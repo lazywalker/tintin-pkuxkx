@@ -192,10 +192,15 @@
     #action {^%%1说道：「%*身穿{深|浅}色衣服%*」$}      { tang.证词 {%%1} 衣色 {%%3} };
     #action {^%%1说道：「%*脚上穿着{深|浅}色鞋子%*」$}  { tang.证词 {%%1} 鞋色 {%%3} };
 
-    #action {^%%1说道：「我啥消息也不了解啊。」$}       { tang.案件进展     };
-    #action {^%%1说道：「你找错人了吧？}                { tang.认错人 {%%1} };
-    #action {^%%1说道：「你找错人了。」$}               { say 找错人了 }; 
-    #action {^%%1说道：「你已经问过了}                  { tang.案件进展     };
+    #action {^%%1说道：「我啥消息也不了解啊。」$}       { tang.marknpc %%1; tang.案件进展     };
+    #action {^%%1说道：「你找错人了吧？}                { tang.marknpc %%1; tang.认错人 {%%1} };
+    #action {^%%1说道：「你找错人了。」$}               { tang.marknpc %%1; say 找错人了 }; 
+    #action {^%%1说道：「你已经问过了}                  { tang.marknpc %%1; tang.案件进展     };
+
+    #action {^%%1说道：「} {
+        #echo {开始查漏补缺};
+        tang.marknpc %%1;
+    } 9.5;
 
     #action {引起了盗贼的怀疑，盗贼逃离了长安城。$}     { tang.失败         };
 
@@ -206,6 +211,13 @@
     };
     #else {
         ask luren $id about $words;
+    };
+};
+
+#alias {tang.marknpc} {
+    #var {tang.data[路人位置][%1]} {
+        {id}{${tang-current-id}}
+        {exit}{${tang-inquiry-exits[${tang-inquiry-exit-index}]}}
     };
 };
 
@@ -333,10 +345,7 @@
     #local 特征点   {%2};
     #local 特征值   {%3};
 
-    #var {tang.data[路人位置][${证人}]} {
-        {id}{${tang-current-id}}
-        {exit}{${tang-inquiry-exits[${tang-inquiry-exit-index}]}}
-    };
+    tang.marknpc ${证人};
 
     #var {tang.data[证人证词][${证人}][特征点]} {${特征点}};
     #var {tang.data[证人证词][${证人}][特征值]} {${特征值}};
@@ -497,9 +506,6 @@
         ask shaoyin about 积分;
     };
 };
-
-#NOP #action {由于你的突出贡献，特奖励爵位贡献%*点，用于提升爵位。} {ask jingzhao shaoyin about 任务信息};
-#NOP #action {你未领取任务，也不能领取奖励} {ask jingzhao shaoyin about 任务信息};
 
 #alias tf {
     #local id {%1};
