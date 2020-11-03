@@ -13,6 +13,7 @@
 };
 
 #alias {ask.job} { ask gu about job };
+#alias {_recover} { n;#5 drink;s;su;#5 have;nd };
 
 #alias {job.jiaocai} {
     #class job open;
@@ -95,12 +96,11 @@
     #class newbie_baishu read bot/wdj/newbie_baishu.tin;
     sw;look shelf;
 
-    #action {^书架上的书有点乱了，你要把它们按颜色整理} { #bell };
-
     #action {^你完成了杂役任务『整理书籍』。$} {
         ne;
         #class job kill;
-        ask.job;
+        _recover;
+        ask.job
     };
 
     #class job close;
