@@ -58,7 +58,7 @@
     #action {^你从茅房的角落取出一个净桶。$} { e;se;yao };
     #action {^你打开便桶，将其中的黄白之物舀进净桶。便桶还没有清空。$} { #delay {3} {yao} };
     #action {^你正忙着呢。$} { #delay {1} {yao} };
-    #action {^你打开便桶，将其中的黄白之物舀进净桶。便桶已经被你清空了。$} { #delay {3} {nw;w;dao} };
+    #action {^{你打开便桶，将其中的黄白之物舀进净桶。便桶已经被你清空了。|只听「扑通」一声，你四脚朝天，向后便倒。}$} { #delay {3} {nw;w;dao} };
     #action {^你完成了杂役任务『清便桶』。$} {
         #delay {3} {
             drop jing tong;e;
@@ -94,7 +94,10 @@
     #class job open;
 
     #class newbie_baishu read bot/wdj/newbie_baishu.tin;
-    sw;look shelf;
+    #delay {2} {sw;look shelf};
+
+    #action {^书架上的书有点乱了，你要把它们按颜色整理$} {
+    };
 
     #action {^你完成了杂役任务『整理书籍』。$} {
         ne;

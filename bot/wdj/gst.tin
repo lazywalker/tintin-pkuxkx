@@ -14,9 +14,9 @@
 };
 
 #alias {_recover} {
-    n;#5 drink;
+    n;#10 drink;
     s;su;#5 have;
-    #NOP e;sleep;
+    e;sleep;
     #var {gst.pause} {0}
 };
 
@@ -63,6 +63,7 @@
 
 #action {^开始领悟...$} {_lian};
 #action {^你正忙着呢。$} {#delay 0.5 {_lian}};
+#action {^你现在精血太低，无法学习蛊术。$} {#delay 2 {_lian}};
 
 #action {^{突然一阵“ 咕咕” 声传来，原来是你的肚子在叫了|你舔了舔干裂的嘴唇，看来是很久没有喝水了。}$} { 
     #var {gst.pause} {1};
