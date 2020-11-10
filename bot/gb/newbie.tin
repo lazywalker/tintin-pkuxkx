@@ -1,0 +1,43 @@
+#class bot open;
+#NOP TODO: 未完成
+
+#alias {startbot} {
+    #show {<efa>开始新手任务...};
+    set brief 3;
+    ask.job
+};
+
+#alias {stopbot} {
+    #show {<efa>结束新手任务...};
+    #class bot kill;
+    set brief 0;
+};
+
+#alias {ask.job} { ask zuo about job };
+#alias {_recover} { n;#5 drink;s;su;#5 have;nd };
+
+#alias {job.dating} {
+    #class job open;
+    #action {^左全对你说道：人人都知道我们丐帮消息天下最为灵通，打探消息就靠你们这些跑腿的了，你去北门打听(dating)些消息回来。$} {
+        out;
+        n;n;n;
+        dating
+    };
+    #action {^你仔细向{官兵|武将}打听江湖中最近的消息。$} { #delay 2 {dating} };
+    #action {^虽然没找到和人搭话的机会，但你还是通过观察搜集了一些情报。$} { #delay 2 {dating} };
+    #action {^你正忙着呢。$} { #delay {1} {dating} };
+
+    #action {^你已经完成了打听消息的任务，可以回去复命了！$} {
+        #delay {2} {
+            s;s;s;
+            enter shudong;
+            #class job kill;
+            ask.job
+        };
+    };
+    #class job close;
+};
+
+#action {^你的动作还没有完成，不能移动。$} {#bell};
+
+#class bot close;
