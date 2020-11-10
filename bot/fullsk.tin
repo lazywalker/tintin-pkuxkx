@@ -1,0 +1,46 @@
+#class fullsk open;
+#echo {%c使用方法：} {light yellow};
+#echo {%cfullsk.start \t 开始 } {light yellow};
+#echo {%cfullsk.stop \t 结束 } {light yellow};
+
+#list {skills} create {strike} {dodge} {force} {parry} {hand} {staff} {blade};
+#var {ski} {0};
+#var {fullsk.delay} {0.5};
+
+#function {nextsk} {
+    #math {ski} {$ski + 1};
+    #list {skills} get ${ski} {sk};
+    #if {"${sk}" == "0"} {
+        #var {ski} {1};
+        #list {skills} get ${ski} {sk};
+    };
+
+    #show {<efa>skill: ${sk}, ski: ${ski}};
+    #return ${sk};
+}
+
+#alias {fullsk.start} {
+    loadbot lian;
+    fullsk.next;
+};
+
+#alias {fullsk.next} {
+    #local {sk} @nextsk{};
+    #show {<efa>正在切换功夫...};
+    startbot ${sk} ${fullsk.delay};
+};
+
+#alias {fullsk.stop} {
+    #show {<efa>结束fullskill机器人...};
+    stopbot;
+    #class fullsk kill;
+};
+
+#NOP #action {^你的「%1」进步了！$} { fullsk.next };
+
+#action {^你已经达到你的技能等级极限！$} { 
+    #list {skills} delete ${ski};
+    fullsk.next;
+};
+
+#class fullsk close;

@@ -1,4 +1,4 @@
-#class lianxi open;
+#class bot open;
 #var {lian.delay} {2};
 
 #alias {_lian} {
@@ -6,7 +6,7 @@
 };
 
 #alias {startbot} {
-    #if {"%1" == "sword" | "%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
+    #if {"%1" == "sword" | "%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand" | "%1" == "cuff"} {
         #var {lian.skill} {%1}; 
 
         #if {"${lian.skill}" == "hand" | "${lian.skill}" == "strike"} {
@@ -28,7 +28,7 @@
         };
         
         #action {^你需要提高基本功，不然练得再多也没有用。$} { 
-            #class lianxi kill;
+            #class bot kill;
             loadbot lingwu; 
             #show {<efa>正在切换到基础功夫领悟...};
             #delay 1 {startbot ${lian.skill} %2};
@@ -38,13 +38,13 @@
         #show {<efa>开始练习高级武功...} ;
     };
     #else {
-        #echo {%c使用方法：startbot [sword|staff|blade|dodge|strike|parry|hand]  <每次间隔秒数>} {light yellow};
+        #echo {%c使用方法：startbot [sword|staff|blade|dodge|strike|parry|hand|cuff]  <每次间隔秒数>} {light yellow};
     };
 };
 
 #alias {stopbot} {
     #show {<efa>结束练习高级武功...};
-    #class lianxi kill;
+    #class bot kill;
 };
 
 #action {^开始练习高级武功...$} { yun qi; _lian};
@@ -65,4 +65,4 @@
 #action {^你必须空手才能练习%*} { unwield all;_lian };
 #action {^练%*必须空手。$} { unwield all;_lian };
 
-#class lianxi close;
+#class bot close;

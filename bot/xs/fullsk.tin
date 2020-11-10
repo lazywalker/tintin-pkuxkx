@@ -1,0 +1,12 @@
+#read {bot/fullsk.tin};
+
+#class fullsk open;
+
+#list {skills} create {sword} {strike} {dodge} {force} {parry} {hand} {blade} {cuff};
+
+#alias {fullsk.start} {
+    loadbot xs/lian;
+    fullsk.next;
+};
+
+#class fullsk close;

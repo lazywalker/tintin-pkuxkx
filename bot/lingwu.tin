@@ -1,6 +1,5 @@
-#class lianxi open;
+#class bot open;
 #show {<efa>必须在门派指定领悟室方可使用。};
-#list {basic.skills} {create} {blade} {dodge} {force} {strike} {parry} {staff} {hand}
 #var {lingwu.delay} {2};
 #var {lingwu.count} {50};
 
@@ -9,7 +8,7 @@
 };
 
 #alias {startbot} {
-    #if {"%1" == "sword" | "%1" == "blade" | "%1" == "dodge" | "%1" == "force" |"%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
+    #if {"%1" == "sword" | "%1" == "blade" | "%1" == "dodge" | "%1" == "force" |"%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand" | "%1" == "cuff"} {
         #var {lingwu.skill} {%1}; 
 
         #if {"%2" != ""} {
@@ -17,7 +16,7 @@
         };
 
         #action {^你的基本功夫比你的高级功夫还高！$} { 
-            #class lianxi kill;
+            #class bot kill;
             loadbot lian; 
             #show {<efa>正在切换到高级功夫练习...};
             #delay 1 {startbot ${lingwu.skill} %2};
@@ -27,13 +26,13 @@
         #show {<efa>开始领悟基础武功...};
     };
     #else {
-        #echo {%c使用方法：startbot [staff|blade|dodge|strike|parry|hand] <每次间隔秒数>} {light yellow};
+        #echo {%c使用方法：startbot [sword|staff|blade|dodge|strike|parry|hand|cuff] <每次间隔秒数>} {light yellow};
     };
 };
 
 #alias {stopbot} {
     #show {<efa>结束领悟基础武功...};
-    #class lianxi kill;
+    #class bot kill;
 };
 
 #action {^开始领悟基础武功...$} {_lian};
@@ -50,4 +49,4 @@
 #action {你精血不足，翻来覆去无法入眠!} { #echo {%c糟糕！失眠了，你决定稍等10s再试一次...} {light red}; #delay 10 {sleep} };
 #action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
-#class lianxi close;
+#class bot close;

@@ -1,0 +1,18 @@
+#read {bot/lian.tin};
+#class bot open;
+
+#var {lian.delay} {1};
+
+#NOP FIXME: stopbot后重新设置_sleep alias;
+#alias {_sleep} {ch; #delay {2} { w;s;sk;hpbrief;sleep }};
+
+#action {^你的%1的级别还没有%2的级别高，不能通过练习来提高了。$} { 
+    #class bot kill;
+    loadbot xs/lingwu; 
+    #show {<efa>正在切换到基础功夫领悟...};
+    #delay 1 {startbot ${lian.skill} ${lian.delay}};
+};
+
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { n;e;_lian };
+
+#class bot close;
