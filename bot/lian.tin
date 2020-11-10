@@ -6,7 +6,7 @@
 };
 
 #alias {startbot} {
-    #if {"%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
+    #if {"%1" == "sword" | "%1" == "blade" | "%1" == "dodge" | "%1" == "strike" | "%1" == "parry" | "%1" == "staff" | "%1" == "hand"} {
         #var {lian.skill} {%1}; 
 
         #if {"${lian.skill}" == "hand" | "${lian.skill}" == "strike"} {
@@ -17,6 +17,7 @@
                 #action {^你现在气血虚浮，练习不了%*。$} { #delay 5 {_lian} };
                 #action {^你太累了，没有办法练习%*。$} { #delay 5 {_lian} };
             };
+            #action {^你的内力不够练%*。$} { _sleep };
             #action {^你的体力太低了。$} { #delay 5 {_lian} };
             #action {^你的体力不够练%*。$} { #delay 5 {_lian} };
             #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { #delay 2 {yun qi; _lian}};
@@ -37,7 +38,7 @@
         #show {<efa>开始练习高级武功...} ;
     };
     #else {
-        #echo {%c使用方法：startbot [staff|blade|dodge|strike|parry|hand]  <每次间隔秒数>} {light yellow};
+        #echo {%c使用方法：startbot [sword|staff|blade|dodge|strike|parry|hand]  <每次间隔秒数>} {light yellow};
     };
 };
 

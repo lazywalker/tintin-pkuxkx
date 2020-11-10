@@ -1,4 +1,4 @@
-#class lianxi open;
+#class bot open;
 #var {xue.delay} {3};
 #var {xue.count} {50};
 
@@ -23,7 +23,7 @@
 
 #alias {stopbot} {
     #show {<efa>结束学习...};
-    #class lianxi kill;
+    #class bot kill;
 };
 
 #action {^开始跟师傅学习...$} { #delay ${xue.delay} { _lian } };
@@ -40,4 +40,4 @@
 
 #action {你刚在三分钟内睡过一觉, 多睡对身体有害无益!} { #delay 5 {sleep} };
 
-#class lianxi close;
+#class bot close;

@@ -1,0 +1,11 @@
+#NOP 雪山派学习;
+loadbot xue;
+#class bot open;
+
+#NOP FIXME: stopbot后重新设置_sleep alias;
+#alias {_sleep} {ch; #delay {2} { s;w;w;n;n;n;w;n;sk;hpbrief;sleep }};
+
+#action {^你目前的真气不足，强行修习内功极易走火。$} { _sleep };
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { s;e;s;s;s;e;e;n;_lian };
+
+#class bot close;

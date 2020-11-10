@@ -10,11 +10,11 @@
 };
 
 #action {^开始打坐...$} { dazuo max };
-#action {^你的内力增加了！！$} { halt;_sleep };
+#NOP #action {^你的内力增加了！！$} { halt;_sleep };
 #NOP #action {^你将运转于全身经脉间的内息收回丹田，深深吸了口气，站了起来。$} { #delay 2 {_lian} };
 #action {^你运功完毕，深深吸了口气，站了起来。$} { dazuo max  };
 #action {^你现在内力接近圆满状态。$} { dazuo 10  };
-#action {^你现在气血严重不足，无法满足打坐最小要求。$} { #delay 5 {dazuo max} };
+#action {^你现在气血严重不足，无法满足打坐最小要求。$} { _sleep };
 #action {^你现在的气太少了，无法产生内息运行全身经脉。$} { _sleep };
 #action {^你现在精不够，无法控制内息的流动！$} { _sleep };
 #action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { dazuo max  };
