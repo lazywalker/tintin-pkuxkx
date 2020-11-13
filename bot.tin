@@ -18,7 +18,7 @@
     {newbie}{新手村}
     {hongdou}{红豆答题}
     {lsnow}{看雪}
-    {canwu}{参悟}
+    {canju}{参悟残局}
     {banzhuan}{搬砖}
     {cai}{踩桩}
     {tang}{大唐任务}
@@ -27,7 +27,9 @@
     {xs/xue}{雪山派:学技能} 
     {xs/lingwu}{雪山派:领悟} 
     {xs/lian}{雪山派:练习} 
+    {xs/du}{雪山派:读书} 
     {xs/fullsk}{雪山派:自动练满技能}
+    {xs/canju}{雪山派:参悟残局}
     {wdj/du}{五毒教:读书}
     {wdj/xue}{五毒教:学技能}
     {wdj/gst}{五毒教:领悟蛊神塔}

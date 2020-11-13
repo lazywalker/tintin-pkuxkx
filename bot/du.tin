@@ -7,7 +7,7 @@
     }; #elseif {"${du.book}" == "tianlong"} {
         read ${du.book} 10;
     }; #else {
-        du ${du.book} for 10;
+        du ${du.book} for 50;
     }
 };
 

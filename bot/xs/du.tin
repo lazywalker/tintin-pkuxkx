@@ -1,0 +1,10 @@
+#NOP 雪山派读书:静修室;
+#read {bot/du.tin};
+#class bot open;
+
+#NOP FIXME: stopbot后重新设置_sleep alias;
+#alias {_sleep} {ch; #delay {2} { s;sk;hpbrief;sleep }};
+
+#action {^你一觉醒来，精神抖擞地活动了几下手脚。$} { n;_lian };
+
+#class bot close;

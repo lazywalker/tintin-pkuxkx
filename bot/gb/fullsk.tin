@@ -1,5 +1,5 @@
 #read {bot/fullsk.tin};
 
 #class fullsk open;
-#list {skills} create {strike} {dodge} {force} {parry} {hand} {staff} {blade};
+#list {skills} create {strike} {dodge} {force} {parry} {hand} {staff} {blade} {sword};
 #class fullsk close;

@@ -1,0 +1,13 @@
+#read {bot/canju.tin};
+#class bot open;
+
+#action {^你的内力不够。$} { dazuo max };
+#action {^( 你的内力已经枯竭，不能施用内功。)$}{ dazuo max };
+#action {^你现在精不够，无法控制内息的流动！$}{ #delay 10 {dazuo max} };
+#action {^你深深吸了几口气，脸色看起来好多了。$} { dazuo max };
+#action {^你运功完毕，深深吸了口气，站了起来。$} { yun recover };
+#action {^你现在气力充沛。$} { dazuo max };
+#action {^你现在气血严重不足，无法满足打坐最小要求。$} { yun recover };
+#action {^你现在内力接近圆满状态。$} { ch;#delay 2 {_lian} };
+
+#class bot close;
